@@ -6,12 +6,11 @@ import { nextTick } from 'vue'
 
 // TODO: Добавить нормальную типизацию
 
-const _mount = (options?: Record<string, unknown>): VueWrapper => {
+const _mount = (): VueWrapper => {
   return mount(BaseIcon, {
     props: {
       name: 'close',
     },
-    ...options,
   })
 }
 
@@ -56,6 +55,8 @@ describe('Testing BaseIcon.vue', () => {
       width: '52px',
       height: '52px',
     })
+
+    await nextTick()
 
     expect(wrapper.attributes().width).toContain('52px')
 
