@@ -262,14 +262,23 @@ Webpack (style-resource-loader) прокидывает указанные сти
 
 `TASK-ID`
 
-- TASK-ID - Id задачи в Jira, без каких либо вложенностей (такие как: `feat/CP-1111` не приветствуются, просто `CP-1111`)
+- TASK-ID - Id задачи
 
 Коммит формируется:
 
-`TASK-ID | description`
+`<type>(<scope>): <subject>`
 
-- TASK-ID - Id задачи в Jira
-- description - краткое описание изменений
+ - feat: (new feature for the user, not a new feature for build script)
+ - fix: (bug fix for the user, not a fix to a build script)
+ - docs: (changes to the documentation)
+ - style: (formatting, missing semi colons, etc; no production code change)
+ - refactor: (refactoring production code, eg. renaming a variable)
+ - test: (adding missing tests, refactoring tests; no production code change)
+ - chore: (updating grunt tasks etc; no production code change)
+
+feat(components/atoms/BaseComponent): add BaseComponent
+
+update(components/molecules/FormItem): add info slot
 
 ---
 
