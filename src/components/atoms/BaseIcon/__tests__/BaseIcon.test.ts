@@ -4,8 +4,6 @@ import { mount, VueWrapper } from '@vue/test-utils'
 import BaseIcon from '@/components/atoms/BaseIcon/BaseIcon.vue'
 import { nextTick } from 'vue'
 
-// TODO: Добавить нормальную типизацию
-
 const _mount = (): VueWrapper => {
   return mount(BaseIcon, {
     props: {
