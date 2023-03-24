@@ -9,6 +9,7 @@ html, #app, body {
 body {
   font-family: $font--main;
   color: $color--black;
+  background-color: $color--gray-200;
 }
 
 .h1, h1 {
@@ -25,6 +26,14 @@ body {
 
 .h4, h4 {
   @include text-h4;
+}
+
+.h5, h5 {
+  @include text-h5;
+}
+
+.h6, h6 {
+  @include text-h6;
 }
 
 .text {
@@ -65,10 +74,33 @@ body {
   color: $color--primary;
 }
 
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
 .divider {
   width: 100%;
   height: 1px;
-  background-color: $color--divider;
+  background: $color--divider;
+}
+
+.router-link-active {
+  &.base-sidebar-collapce__link {
+    &.router-link-exact-active {
+      color: $color--black;
+
+    }
+  }
+}
+
+.router-link-active {
+  &.disabled {
+    pointer-events: none;
+  }
 }
 
 // Colors
@@ -80,17 +112,7 @@ in (
     ('danger', $color--danger),
     ('warning', $color--warning),
     ('white', $color--white),
-    ('disabled', $color--disabled),
-    ('background', $color--background),
-    ('background-gradient', $color--background-gradient),
-    ('divider', $color--divider),
-    ('black', $color--black),
-    ('black-secondary', $color--black-secondary),
-    ('gray', $color--gray),
-    ('gray-secondary', $color--gray-secondary),
-    ('pink', $color--pink),
-    ('blue', $color--blue),
-    ('violet', $color--violet),
+    ('gray', $color--gray)
 ) {
   // @sample
   // .bg-primary

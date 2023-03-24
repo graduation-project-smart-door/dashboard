@@ -1,6 +1,11 @@
 <template>
   <div class="main-layout">
+    <base-sidebar />
+
+    <div class="header-bg" />
+
     <div class="main-layout__content-wrapper">
+      <base-header />
       <div class="main-layout__content">
         <div class="main-layout__container">
           <router-view />
@@ -16,7 +21,6 @@
   height: 100%;
   position: relative;
   display: flex;
-  background: $color--background-gradient;
 
   &__content-wrapper {
     width: 100%;
@@ -61,5 +65,16 @@
   @include responsive(xs) {
     flex-direction: column-reverse;
   }
+}
+
+.header-bg {
+  @include z-index(below);
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  background-color: $color--primary;
 }
 </style>

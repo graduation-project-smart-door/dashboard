@@ -14,7 +14,37 @@ const router = createRouter({
           name: ROUTE_NAMES.Home,
           component: () => import('@/pages/HomePage/HomePage.vue'),
           meta: {
-            title: 'Статистика',
+            breadcrumb: [{ title: 'Статистика', name: '/', isLink: true }],
+          },
+        },
+        {
+          path: '/pages/users',
+          name: ROUTE_NAMES.Users,
+          component: () => import('@/pages/Users/UsersPage.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Страницы / ', name: '/', isLink: false },
+              { title: 'Пользователи', name: ROUTE_NAMES.Users, isLink: true },
+            ],
+          },
+        },
+        {
+          path: '/pages/events',
+          name: ROUTE_NAMES.Events,
+          component: () => import('@/pages/EventsPage/EventsPage.vue'),
+          meta: {
+            breadcrumb: [
+              { title: 'Страницы / ', name: '/', isLink: false },
+              { title: 'Действия', name: ROUTE_NAMES.Events, isLink: true },
+            ],
+          },
+        },
+        {
+          path: '/controller',
+          name: ROUTE_NAMES.Controller,
+          component: () => import('@/pages/ControllerPage/ControllerPage.vue'),
+          meta: {
+            breadcrumb: [{ title: 'Контроллер', name: '/', isLink: true }],
           },
         },
       ],

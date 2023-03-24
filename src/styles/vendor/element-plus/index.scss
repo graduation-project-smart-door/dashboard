@@ -12,13 +12,6 @@
 /* ElRow */
 @use 'element-plus/theme-chalk/src/row';
 
-@import 'switch';
-@import 'checkbox';
-@import 'radio';
-@import 'dropdown';
-@import 'dialog';
-@import 'button';
-@import 'popper';
-@import 'tabs';
-@import 'overlay';
+@import 'collapse';
 @import 'table';
+
