@@ -41,7 +41,6 @@
     justify-content: center;
     padding: 50px;
     overflow-x: hidden;
-    overflow-y: scroll;
 
     @include responsive(xs, $breakpoints-only-max) {
       padding: 0 10px 40px;

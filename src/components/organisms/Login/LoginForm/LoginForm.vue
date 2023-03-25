@@ -8,7 +8,7 @@
       <el-input v-model="loginFormData.password" placeholder="Введите пароль" />
     </el-form-item>
 
-    <el-form-item>
+    <el-form-item class="login-form__submit-button">
       <el-button type="primary" @click="handleFormSubmit">Авторизация</el-button>
     </el-form-item>
   </el-form>
@@ -47,3 +47,13 @@ const handleFormSubmit = async (): Promise<void> => {
   })
 }
 </script>
+
+<style lang="scss" scoped>
+.login-form {
+  &__submit-button {
+    :deep(.el-form-item__content) {
+      justify-content: center;
+    }
+  }
+}
+</style>
