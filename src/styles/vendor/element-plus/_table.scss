@@ -5,8 +5,9 @@
 
   &__header {
     .el-table__cell {
+      @include text-sm;
+
       text-transform: uppercase;
-      @include text-sm();
     }
   }
 }

@@ -3,7 +3,6 @@
     <div>
       <div class="breadcrumbs__pages">
         <ul class="base-breadcrumbs__menu">
-<!--          TODO: Фикс TS-->
           <li v-for="(breadcrumb, index) in breadcrumbs" :key="index">
             <router-link
               :class="['base-breadcrumbs__menu-link', { disabled: !breadcrumb.isLink }]"
@@ -29,7 +28,7 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 
 type BreadcrumbType = {
   title: string
-  name?: string
+  name: string
   isLink: boolean
 }
 

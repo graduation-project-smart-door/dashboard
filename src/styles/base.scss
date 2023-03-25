@@ -89,15 +89,12 @@ a {
 }
 
 .router-link-active {
-  &.base-sidebar-collapce__link {
+  &.base-sidebar-collapse__link {
     &.router-link-exact-active {
       color: $color--black;
-
     }
   }
-}
 
-.router-link-active {
   &.disabled {
     pointer-events: none;
   }
