@@ -1,13 +1,9 @@
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosInstance } from 'axios'
 import Cookies from 'js-cookie'
 
 import type { AxiosRequestConfig } from 'axios'
 
-type ApiResponseType<T = unknown[]> = {
-  data: T
-}
-
-type ServiceResponseType<T> = Promise<[null, AxiosResponse<ApiResponseType<T>>] | [AxiosError<ApiResponseType>]>
+type ServiceResponseType<T> = Promise<[null, T] | [Error]>
 
 export class AxiosService {
   private axiosInstance!: AxiosInstance
@@ -59,11 +55,11 @@ export class AxiosService {
 
   protected async axiosCall<T = any>(config: AxiosRequestConfig): ServiceResponseType<T> {
     try {
-      const response = await this.axiosInstance.request<ApiResponseType<T>>(config)
+      const { data } = await this.axiosInstance.request<T>(config)
 
-      return [null, response]
+      return [null, data]
     } catch (error: any) {
-      return [error as AxiosError<ApiResponseType>]
+      return [error]
     }
   }
 }

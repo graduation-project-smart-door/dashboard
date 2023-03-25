@@ -9,3 +9,8 @@ export type UserType = {
   email: string
   phone: string
 }
+
+export type UserLoginType = {
+  email: string
+  password: string
+}
