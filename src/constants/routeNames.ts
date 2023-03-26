@@ -5,4 +5,4 @@ export const ROUTE_NAMES = {
   Users: 'Users',
   Events: 'Events',
   Controller: 'Controller',
-}
+} as const
