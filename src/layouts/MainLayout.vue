@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute, useRouter } from 'vue-router'
-import { computed, watch } from 'vue'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import { ROUTE_NAMES } from '@/constants/routeNames'
 
 const route = useRoute()
