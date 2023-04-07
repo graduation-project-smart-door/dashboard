@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { ROUTE_NAMES } from '@/constants/routeNames'
 
+// TODO: УБрать breadcrumbs
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -11,7 +12,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: ROUTE_NAMES.Home,
+          name: ROUTE_NAMES.HomePage,
           component: () => import('@/pages/HomePage/HomePage.vue'),
           meta: {
             breadcrumb: [{ title: 'Статистика', name: '/', isLink: true }],
@@ -19,39 +20,55 @@ const router = createRouter({
         },
         {
           path: '/pages/users',
-          name: ROUTE_NAMES.Users,
+          name: ROUTE_NAMES.UsersPage,
           component: () => import('@/pages/Users/UsersPage.vue'),
           meta: {
             breadcrumb: [
               { title: 'Страницы / ', name: '/', isLink: false },
-              { title: 'Пользователи', name: ROUTE_NAMES.Users, isLink: true },
+              { title: 'Пользователи', name: '/pages/users', isLink: true },
             ],
           },
         },
         {
           path: '/pages/events',
-          name: ROUTE_NAMES.Events,
+          name: ROUTE_NAMES.EventsPage,
           component: () => import('@/pages/EventsPage/EventsPage.vue'),
           meta: {
             breadcrumb: [
               { title: 'Страницы / ', name: '/', isLink: false },
-              { title: 'Действия', name: ROUTE_NAMES.Events, isLink: true },
+              { title: 'Действия', name: '/pages/events', isLink: true },
             ],
           },
         },
         {
           path: '/controller',
-          name: ROUTE_NAMES.Controller,
+          name: ROUTE_NAMES.ControllerPage,
           component: () => import('@/pages/ControllerPage/ControllerPage.vue'),
           meta: {
             breadcrumb: [{ title: 'Контроллер', name: '/', isLink: true }],
+          },
+        },
+        {
+          path: '/door',
+          name: ROUTE_NAMES.DoorPage,
+          component: () => import('@/pages/DoorPage/DoorPage.vue'),
+          meta: {
+            breadcrumb: [{ title: 'Статистика Двери', name: '/', isLink: true }],
+          },
+        },
+        {
+          path: '/employee/:id',
+          name: ROUTE_NAMES.EmployeePage,
+          component: () => import('@/pages/EmployeePage/EmployeePage.vue'),
+          meta: {
+            breadcrumb: [{ title: 'Профиль', name: '/', isLink: false }],
           },
         },
       ],
     },
     {
       path: '/',
-      name: 'GuestLayout',
+      name: ROUTE_NAMES.GuestLayout,
       component: () => import('@/layouts/GuestLayout.vue'),
       children: [
         {
@@ -60,6 +77,11 @@ const router = createRouter({
           component: () => import('@/pages/LoginPage/LoginPage.vue'),
         },
       ],
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: ROUTE_NAMES.ErrorPage,
+      component: () => import('@/pages/ErrorPage/ErrorPage.vue'),
     },
   ],
 })

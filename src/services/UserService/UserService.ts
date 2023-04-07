@@ -29,6 +29,13 @@ class UserService extends AxiosService {
       url: '/users',
     })
   }
+
+  getById = async (id: string) => {
+    return this.axiosCall<UserType>({
+      method: 'get',
+      url: `/users/${id}`,
+    })
+  }
 }
 
 export default new UserService(API_CONFIG)

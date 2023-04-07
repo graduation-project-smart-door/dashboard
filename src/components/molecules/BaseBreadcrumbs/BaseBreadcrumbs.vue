@@ -16,8 +16,6 @@
 
       <h6 v-if="lastBreadcrumb.name !== '/'" class="color-white">{{ lastBreadcrumb.title }}</h6>
     </div>
-
-    <slot name="menu" />
   </div>
 </template>
 
@@ -36,7 +34,7 @@ const route = useRoute()
 
 const breadcrumbs = ref<BreadcrumbType[]>([
   {
-    name: ROUTE_NAMES.Home,
+    name: ROUTE_NAMES.HomePage,
     title: '',
     isLink: true,
   },

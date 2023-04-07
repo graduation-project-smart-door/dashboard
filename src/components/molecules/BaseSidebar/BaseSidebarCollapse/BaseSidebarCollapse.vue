@@ -3,12 +3,23 @@
     <el-collapse-item title="Страницы" name="1">
       <ul>
         <li class="base-sidebar-collapse__page">
-          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.Users }">
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.UsersPage }">
             Все пользователи
           </router-link>
         </li>
         <li class="base-sidebar-collapse__page">
-          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.Events }"> Действия </router-link>
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.EventsPage }">
+            Действия
+          </router-link>
+        </li>
+
+        <li class="base-sidebar-collapse__page">
+          <router-link
+            class="base-sidebar-collapse__link"
+            :to="{ name: ROUTE_NAMES.EmployeePage, params: { id: '1' } }"
+          >
+            Работник
+          </router-link>
         </li>
       </ul>
     </el-collapse-item>
@@ -16,8 +27,18 @@
     <el-collapse-item title="Микроконтроллер" name="2">
       <ul>
         <li class="base-sidebar-collapse__page">
-          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.Controller }">
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.ControllerPage }">
             Статистика
+          </router-link>
+        </li>
+      </ul>
+    </el-collapse-item>
+
+    <el-collapse-item title="Дверь" name="3">
+      <ul>
+        <li class="base-sidebar-collapse__page">
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.DoorPage }">
+            Статистика двери
           </router-link>
         </li>
       </ul>

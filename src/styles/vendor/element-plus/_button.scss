@@ -1,0 +1,19 @@
+.el-button {
+  &.el-button--primary {
+    border-color: transparent;
+    box-shadow: 3px 3px 6px rgb(25 90 188 / 0.2);
+    text-shadow: 1px 1px 0 rgb(0 0 0 / 0.1);
+    color: $color--white;
+    background: $color--primary;
+    transition: background 0.3s ease-out;
+
+    &:not(.is-disabled):hover,
+    &:focus:hover {
+      background: linear-gradient(0deg, rgb(51 51 51 / 0.2), rgb(51 51 51 / 0.2)), $color--primary;
+    }
+
+    &.is-disabled {
+      opacity: 0.5;
+    }
+  }
+}

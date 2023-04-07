@@ -1,6 +1,6 @@
 <template>
   <aside class="base-sidebar">
-    <router-link class="d-f ai-c jc-c py-16" :to="{ name: ROUTE_NAMES.Home }">
+    <router-link class="d-f ai-c jc-c py-16" :to="{ name: ROUTE_NAMES.HomePage }">
       <base-icon name="logo" class="icon-32 mr-8" />
       <div class="text-lg bold">Dashboard</div>
     </router-link>
@@ -18,7 +18,6 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 <style lang="scss" scoped>
 .base-sidebar {
   width: 290px;
-  height: 100%;
   border-radius: 12px;
   background-color: $color--white;
   padding: 8px;

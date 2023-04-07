@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import IconTemplate from '@/components/atoms/BaseIcon/BaseIcon.vue'
 import 'virtual:svg-icons-register'
 import 'virtual:fonts.css'
 
@@ -10,11 +9,13 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import { vMaska } from 'maska'
 
+import BaseIcon from '@/components/atoms/BaseIcon/BaseIcon.vue'
+
 import '@/styles/index.scss'
 
 const app = createApp(App)
 
-app.component('IconTemplate', IconTemplate)
+app.component('BaseIcon', BaseIcon)
 
 app.use(createPinia())
 
