@@ -1,5 +1,5 @@
 <template>
-  <el-table class="users-table" :data="props.users">
+  <el-table class="users-table" :data="props.users" @row-click="handleEmployeePageOpen">
     <el-table-column label="id">
       <template #default="{ row }">
         {{ row.id }}
@@ -25,6 +25,8 @@
 
 <script lang="ts" setup>
 import { UserType } from '@/types/user.type'
+import { useRouter } from 'vue-router'
+import { ROUTE_NAMES } from '@/constants/routeNames'
 
 type Props = {
   users: UserType[]
@@ -33,4 +35,10 @@ type Props = {
 const props = withDefaults(defineProps<Props>(), {
   users: () => [],
 })
+
+const router = useRouter()
+
+const handleEmployeePageOpen = ({ id }: Pick<UserType, 'id'>): void => {
+  router.push({ name: ROUTE_NAMES.EmployeePage, params: { id } })
+}
 </script>

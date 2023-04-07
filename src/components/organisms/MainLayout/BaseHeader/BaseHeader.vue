@@ -1,10 +1,6 @@
 <template>
   <header class="base-header">
-    <base-breadcrumbs class="base-header__breadcrumbs">
-      <template #menu>
-        <div class="base-header__breadcrumbs-menu"> menu </div>
-      </template>
-    </base-breadcrumbs>
+    <base-breadcrumbs class="base-header__breadcrumbs" />
 
     <div class="profile">
       <base-icon name="profile" class="icon-20" />
@@ -21,5 +17,6 @@ import BaseBreadcrumbs from '@/components/molecules/BaseBreadcrumbs/BaseBreadcru
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-top: 16px;
 }
 </style>

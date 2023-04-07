@@ -1,8 +1,12 @@
 export const ROUTE_NAMES = {
   Layout: 'Layout',
-  Home: 'Home',
+  GuestLayout: 'GuestLayout',
+  HomePage: 'HomePage',
   LoginPage: 'LoginPage',
-  Users: 'Users',
-  Events: 'Events',
-  Controller: 'Controller',
+  UsersPage: 'UsersPage',
+  EventsPage: 'EventsPage',
+  ControllerPage: 'ControllerPage',
+  DoorPage: 'DoorPage',
+  ErrorPage: 'ErrorPage',
+  EmployeePage: 'EmployeePage',
 } as const

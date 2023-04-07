@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import Cookies from 'js-cookie'
 
 import type { AxiosRequestConfig } from 'axios'
@@ -65,7 +65,7 @@ export class AxiosService {
 }
 
 export const getBaseUrl = (): string => {
-  return import.meta.env.DEV ? '/api/v1' : [import.meta.env.VITE_BASE_URL, '/api/v1'].join('')
+  return import.meta.env.DEV ? '/api/' : [import.meta.env.VITE_BASE_URL, '/api/'].join('')
 }
 
 export const API_CONFIG: AxiosRequestConfig = {
