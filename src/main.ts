@@ -9,8 +9,6 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import { vMaska } from 'maska'
 
-import '@cloudgeek/vue3-video-player/dist/vue3-video-player.css'
-
 import BaseIcon from '@/components/atoms/BaseIcon/BaseIcon.vue'
 
 import '@/styles/index.scss'
