@@ -5,20 +5,20 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from 'vue'
+import { reactive } from 'vue'
 import { BarChart, useBarChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 import { fillPlugin } from '@/utils/chart.util'
 
 Chart.register(...registerables)
 
-type Props = {
-  data: unknown[]
-}
+// type Props = {
+//   data: unknown[]
+// }
 
-const props = withDefaults(defineProps<Props>(), {
-  data: () => [],
-})
+// const props = withDefaults(defineProps<Props>(), {
+//   data: () => [],
+// })
 
 // const labels = computed(() => {
 //   return props.data.map((user: any) => {
@@ -59,7 +59,7 @@ const chartData = reactive({
 const options = {
   plugins: {
     customCanvasBackgroundColor: {
-      color: '#eeeeee',
+      color: '#ffffff',
     },
     tooltip: {
       cornerRadius: 2,
@@ -95,7 +95,7 @@ const options = {
   },
 }
 
-const { barChartProps, barChartRef } = useBarChart({
+const { barChartProps } = useBarChart({
   chartData: chartData,
   options,
   plugins: [fillPlugin],
