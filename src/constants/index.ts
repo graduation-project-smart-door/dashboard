@@ -9,3 +9,9 @@ export const SHOWED_PHONE_MASKS: Record<string, string> = {
 }
 
 export const IMAGE_TYPES = ['.jpeg', '.jpg', '.png']
+
+export const ROLES_MAP: Record<string, string> = {
+  admin: 'Админ',
+  user: 'Пользователь',
+  manager: 'Менеджер',
+}

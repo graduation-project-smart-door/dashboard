@@ -45,7 +45,7 @@
               <h4>19647</h4>
             </div>
           </div>
-          <div>
+          <div class="mt-8">
             <div>
               <span>Выходов в день</span>
             </div>
@@ -55,7 +55,7 @@
               <h4>19647</h4>
             </div>
           </div>
-          <div>
+          <div class="mt-8">
             <div>
               <span>Среднее время</span>
             </div>
@@ -64,8 +64,9 @@
               {{ Math.round(statistic.average_time) > 0 ? Math.round(statistic.average_time) : 0 }} час.</span>-->
               <h4>182</h4>
             </div>
-            <router-link :to="{ name: ROUTE_NAMES.EventsPage }"> См. всех </router-link>
+            <router-link class="link my-8 d-b" :to="{ name: ROUTE_NAMES.EventsPage }"> См. всех </router-link>
           </div>
+          <span> *Данные приведены за месяц </span>
           <!--  <span v-if="statistic.number_in_office" class="note
           -note-nu- -light-gray-" style="margin-bottom: 20px">-->
           <!--          *Данные приведены за {{ moment(statistic.number_in_office.month,
