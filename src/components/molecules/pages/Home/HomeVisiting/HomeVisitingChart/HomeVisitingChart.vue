@@ -6,7 +6,7 @@
 import { Chart, registerables } from 'chart.js'
 import { LineChart, useLineChart } from 'vue-chart-3'
 import { reactive } from 'vue'
-import { fillPlugin } from '@/utils/chart.util'
+import { fillPlugin } from '@/utils/chart'
 import gradient from 'chartjs-plugin-gradient'
 
 Chart.register(...registerables, gradient)
@@ -50,7 +50,7 @@ const chartData = reactive({
 const options = {
   plugins: {
     customCanvasBackgroundColor: {
-      color: '#eeeeee',
+      color: '#ffffff',
     },
     tooltip: {
       cornerRadius: 2,
@@ -117,7 +117,7 @@ const { lineChartProps, lineChartRef } = useLineChart({
   height: 100%;
 
   :deep(#line-chart) {
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
     box-shadow: 0 5px 14px rgb(0 0 0 / 0.05);
   }
 }

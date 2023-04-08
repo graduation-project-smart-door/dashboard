@@ -1,5 +1,7 @@
 import { AxiosRequestConfig } from 'axios'
+
 import { API_CONFIG, AxiosService } from '@/plugins/AxiosService/AxiosService'
+
 import { UserLoginType, UserType } from '@/types/user.type'
 
 class UserService extends AxiosService {

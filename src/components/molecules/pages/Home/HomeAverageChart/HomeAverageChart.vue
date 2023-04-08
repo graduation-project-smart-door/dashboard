@@ -8,7 +8,7 @@
 import { reactive } from 'vue'
 import { BarChart, useBarChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
-import { fillPlugin } from '@/utils/chart.util'
+import { fillPlugin } from '@/utils/chart'
 
 Chart.register(...registerables)
 

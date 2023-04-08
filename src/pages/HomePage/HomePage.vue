@@ -6,6 +6,8 @@
 
     <el-row class="home-page__content-top">
       <el-col :md="16" class="home-page__visiting-chart-wrapper">
+        <home-visiting-filters @change-filters="changeFilters" />
+
         <home-visiting-chart :arrival="[]" :leaving="[]" />
       </el-col>
       <el-col :md="8">
@@ -81,7 +83,16 @@
 
 <script setup lang="ts">
 import { ROUTE_NAMES } from '@/constants/routeNames'
-import HomeVisitingChart from '@/components/molecules/Home/HomeVisitingChart/HomeVisitingChart.vue'
+import StatisticService from '@/services/StatisticService/StatisticService'
+import { DatesFilterType } from '@/types/statistic.type'
+
+const changeFilters = async (dates: DatesFilterType): Promise<void> => {
+  const [error, response] = await StatisticService.getVisitingChart(dates)
+
+  if (!error && response) {
+    console.log('success')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -113,7 +124,6 @@ import HomeVisitingChart from '@/components/molecules/Home/HomeVisitingChart/Hom
 
   &__content {
     &-top {
-      height: 540px;
       margin-top: 30px;
     }
 
@@ -125,6 +135,8 @@ import HomeVisitingChart from '@/components/molecules/Home/HomeVisitingChart/Hom
 
   &__visiting-chart-wrapper {
     height: 100%;
+    border-radius: 20px;
+    background-color: $color--white;
   }
 }
 </style>

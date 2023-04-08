@@ -8,10 +8,6 @@
   </header>
 </template>
 
-<script setup lang="ts">
-import BaseBreadcrumbs from '@/components/molecules/BaseBreadcrumbs/BaseBreadcrumbs.vue'
-</script>
-
 <style lang="scss" scoped>
 .base-header {
   width: 100%;
