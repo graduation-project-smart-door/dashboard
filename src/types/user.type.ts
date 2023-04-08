@@ -8,6 +8,7 @@ export type UserType = {
   image: string
   email: string
   phone: string
+  role: string
 }
 
 export type UserLoginType = {

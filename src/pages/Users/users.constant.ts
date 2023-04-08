@@ -11,6 +11,7 @@ export const usersData: UserType[] = [
     image: 'string',
     email: 'test@email.com',
     phone: '8 888 888 88 88',
+    role: 'admin',
   },
   {
     id: '2',
@@ -22,6 +23,7 @@ export const usersData: UserType[] = [
     image: 'string',
     email: 'test@email.com',
     phone: '8 888 888 88 88',
+    role: 'user',
   },
   {
     id: '3',
@@ -33,5 +35,6 @@ export const usersData: UserType[] = [
     image: 'string',
     email: 'test@email.com',
     phone: '8 888 888 88 88',
+    role: 'manager',
   },
 ]
