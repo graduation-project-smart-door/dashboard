@@ -24,7 +24,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { EmployeeUpdateFormType } from '@/pages/Employee/EmployeeUpdate/EmployeeUpdate.type'
+import { EmployeeUpdateFormType } from '@/components/organisms/pages/Employee/EmployeeUpdate/EmployeeUpdate.type'
 import { UploadUserFile } from 'element-plus'
 
 const employeeUpdateForm = reactive<EmployeeUpdateFormType>({

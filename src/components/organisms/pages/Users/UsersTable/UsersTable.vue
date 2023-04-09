@@ -49,10 +49,10 @@ import { useRouter } from 'vue-router'
 import { ROUTE_NAMES } from '@/constants/routeNames'
 import { ROLES_MAP } from '@/constants'
 
-import { UserType } from '@/types/user.type'
+import { ApiUserType } from '@/types/user.type'
 
 type Props = {
-  users: UserType[]
+  users: ApiUserType[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -61,7 +61,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const router = useRouter()
 
-const handleEmployeePageOpen = ({ id }: Pick<UserType, 'id'>): void => {
+const handleEmployeePageOpen = ({ id }: Pick<ApiUserType, 'id'>): void => {
   router.push({ name: ROUTE_NAMES.EmployeePage, params: { id } })
 }
 </script>

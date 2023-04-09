@@ -23,10 +23,7 @@ const router = createRouter({
           name: ROUTE_NAMES.UsersPage,
           component: () => import('@/pages/Users/UsersPage.vue'),
           meta: {
-            breadcrumb: [
-              { title: 'Страницы / ', name: '/', isLink: false },
-              { title: 'Пользователи', name: '/pages/users', isLink: true },
-            ],
+            breadcrumb: [{ title: 'Пользователи', name: '/', isLink: false }],
           },
         },
         {
@@ -34,10 +31,7 @@ const router = createRouter({
           name: ROUTE_NAMES.EventsPage,
           component: () => import('@/pages/EventsPage/EventsPage.vue'),
           meta: {
-            breadcrumb: [
-              { title: 'Страницы / ', name: '/', isLink: false },
-              { title: 'Действия', name: '/pages/events', isLink: true },
-            ],
+            breadcrumb: [{ title: 'Действия', name: '/', isLink: false }],
           },
         },
         {
@@ -62,6 +56,22 @@ const router = createRouter({
           component: () => import('@/pages/EmployeePage/EmployeePage.vue'),
           meta: {
             breadcrumb: [{ title: 'Профиль', name: '/', isLink: false }],
+          },
+        },
+        {
+          path: '/admins/listing',
+          name: ROUTE_NAMES.AdminsListingPage,
+          component: () => import('@/pages/Admins/AdminsListing/AdminsListing.vue'),
+          meta: {
+            breadcrumb: [{ title: 'Все администраторы', name: '/', isLink: false }],
+          },
+        },
+        {
+          path: '/admins/create',
+          name: ROUTE_NAMES.AdminsCreatePage,
+          component: () => import('@/pages/Admins/AdminsCreate/AdminsCreate.vue'),
+          meta: {
+            breadcrumb: [{ title: 'Создание администратора', name: '/', isLink: false }],
           },
         },
       ],

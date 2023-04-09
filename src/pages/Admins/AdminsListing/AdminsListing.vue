@@ -1,6 +1,6 @@
 <template>
-  <div class="users-page">
-    <users-table :users="usersData" />
+  <div class="admins-listing">
+    <admins-listing-table :users="usersData" />
   </div>
 </template>
 

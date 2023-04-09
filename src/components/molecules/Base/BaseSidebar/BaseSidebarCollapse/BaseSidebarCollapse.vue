@@ -43,6 +43,21 @@
         </li>
       </ul>
     </el-collapse-item>
+
+    <el-collapse-item title="Администраторы" name="4">
+      <ul>
+        <li class="base-sidebar-collapse__page">
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.AdminsListingPage }">
+            Все администраторы
+          </router-link>
+        </li>
+        <li class="base-sidebar-collapse__page">
+          <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.AdminsCreatePage }">
+            Создать администратора
+          </router-link>
+        </li>
+      </ul>
+    </el-collapse-item>
   </el-collapse>
 </template>
 

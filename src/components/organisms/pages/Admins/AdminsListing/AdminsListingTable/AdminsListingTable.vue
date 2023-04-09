@@ -1,5 +1,5 @@
 <template>
-  <el-table class="events-table" :data="props.events" @row-click="handleEmployeePageOpen">
+  <el-table class="admins-listing-table" :data="props.users" @row-click="handleEmployeePageOpen">
     <el-table-column label="id">
       <template #default="{ row }">
         {{ row.id }}
@@ -15,9 +15,24 @@
         {{ row.last_name }}
       </template>
     </el-table-column>
-    <el-table-column label="Статус">
+    <el-table-column label="Отчетсво">
       <template #default="{ row }">
-        <base-status :status="row.status" />
+        {{ row.last_name }}
+      </template>
+    </el-table-column>
+    <el-table-column label="Телефон">
+      <template #default="{ row }">
+        {{ row.phone }}
+      </template>
+    </el-table-column>
+    <el-table-column label="Почта">
+      <template #default="{ row }">
+        {{ row.email }}
+      </template>
+    </el-table-column>
+    <el-table-column label="Дата регистрации">
+      <template #default="{ row }">
+        {{ row.created_at }}
       </template>
     </el-table-column>
   </el-table>
@@ -26,21 +41,22 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
 
-import { EventType } from '@/types/event.type'
-import { UserType } from '@/types/user.type'
 import { ROUTE_NAMES } from '@/constants/routeNames'
+import { ROLES_MAP } from '@/constants'
+
+import { ApiUserType } from '@/types/user.type'
 
 type Props = {
-  events: EventType[]
+  users: ApiUserType[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  events: () => [],
+  users: () => [],
 })
 
 const router = useRouter()
 
-const handleEmployeePageOpen = ({ id }: Pick<UserType, 'id'>): void => {
+const handleEmployeePageOpen = ({ id }: Pick<ApiUserType, 'id'>): void => {
   router.push({ name: ROUTE_NAMES.EmployeePage, params: { id } })
 }
 </script>

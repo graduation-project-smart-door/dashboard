@@ -7,6 +7,8 @@ export const ROUTE_NAMES = {
   EventsPage: 'EventsPage',
   ControllerPage: 'ControllerPage',
   DoorPage: 'DoorPage',
-  ErrorPage: 'ErrorPage',
   EmployeePage: 'EmployeePage',
+  AdminsCreatePage: 'AdminsCreatePage',
+  AdminsListingPage: 'AdminsListingPage',
+  ErrorPage: 'ErrorPage',
 } as const

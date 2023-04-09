@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from 'axios'
 
 import { API_CONFIG, AxiosService } from '@/plugins/AxiosService/AxiosService'
 
-import { UserLoginType, UserType } from '@/types/user.type'
+import { UserLoginType, ApiUserType } from '@/types/user.type'
 
 class UserService extends AxiosService {
   constructor(config?: AxiosRequestConfig) {
@@ -26,14 +26,14 @@ class UserService extends AxiosService {
   }
 
   getAll = async () => {
-    return this.axiosCall<UserType[]>({
+    return this.axiosCall<ApiUserType[]>({
       method: 'get',
       url: '/users',
     })
   }
 
   getById = async (id: string) => {
-    return this.axiosCall<UserType>({
+    return this.axiosCall<ApiUserType>({
       method: 'get',
       url: `/users/${id}`,
     })

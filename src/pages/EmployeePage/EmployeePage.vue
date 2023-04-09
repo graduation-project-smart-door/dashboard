@@ -37,21 +37,24 @@
         </div>
       </div>
 
-      <employee-update />
+      <employee-update v-if="user.role === 'admin' || user.role === 'superadmin'" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ElMessage } from 'element-plus'
-
-import EmployeeUpdate from '@/pages/Employee/EmployeeUpdate/EmployeeUpdate.vue'
 
 import UserService from '@/services/UserService/UserService'
 import { useRoute } from 'vue-router'
+import { ApiUserType } from '@/types/user.type'
 
 const route = useRoute()
+
+const user = ref<Partial<ApiUserType>>({
+  role: '',
+})
 
 onMounted(() => {
   getEmployee()
