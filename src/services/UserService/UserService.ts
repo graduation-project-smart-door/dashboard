@@ -25,10 +25,11 @@ class UserService extends AxiosService {
     })
   }
 
-  getAll = async () => {
+  getAll = async (params?: any) => {
     return this.axiosCall<ApiUserType[]>({
       method: 'get',
       url: '/users',
+      params,
     })
   }
 
