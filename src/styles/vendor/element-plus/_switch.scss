@@ -1,0 +1,18 @@
+.el-switch {
+  &.login-form__switch {
+    &.is-checked {
+      .el-switch {
+        &__label {
+          &.is-active {
+            color: $color--primary;
+          }
+        }
+
+        &__core {
+          border-color: transparent;
+          background-color: $color--primary;
+        }
+      }
+    }
+  }
+}

@@ -8,18 +8,30 @@
       <el-input v-model="loginFormData.password" placeholder="Введите пароль" />
     </el-form-item>
 
+    <el-form-item>
+      <el-switch v-model="isRememberMe" class="login-form__switch" active-text="Запомнить меня" />
+    </el-form-item>
+
     <el-form-item class="login-form__submit-button">
-      <el-button type="primary" @click="handleFormSubmit">Авторизация</el-button>
+      <el-button type="primary" class="bold" data-testid="submit" @click="handleFormSubmit">Авторизация</el-button>
     </el-form-item>
   </el-form>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { UserLoginType } from '@/types/user.type'
-import { FormInstance, FormRules } from 'element-plus'
+import { ElMessage, FormInstance, FormRules } from 'element-plus'
 import { commonRules } from '@/constants/formRules'
 import UserService from '@/services/UserService/UserService'
+import { useUser } from '@/composables/useUser'
+import { useRouter } from 'vue-router'
+import { ROUTE_NAMES } from '@/constants/routeNames'
+import Cookies from 'js-cookie'
+import axios from 'axios'
+
+const { setAuthorized, setProfile, isAuthorized } = useUser()
+const router = useRouter()
 
 const loginFormInstance = ref<FormInstance>()
 
@@ -28,10 +40,31 @@ const loginFormData = reactive<UserLoginType>({
   password: '',
 })
 
+const isRememberMe = ref(false)
+
 const loginFormRules = reactive<FormRules>({
-  email: [commonRules.required],
-  password: [commonRules.required, commonRules.password],
+  email: [commonRules.required, commonRules.email],
+  password: [commonRules.required],
 })
+
+onMounted(() => {
+  getMe()
+})
+
+const getMe = async (): Promise<void> => {
+  // const [error, response] = await UserService.getMe()
+  await axios.get('https://jsonplaceholder.typicode.com/users/1')
+
+  // if (!error && response) {
+  //   setProfile(response)
+  //
+  //   setAuthorized(true)
+  //
+  //   await router.push({ name: ROUTE_NAMES.HomePage })
+  // } else {
+  //   setAuthorized(false)
+  // }
+}
 
 const handleFormSubmit = async (): Promise<void> => {
   if (!loginFormInstance.value) return
@@ -41,7 +74,20 @@ const handleFormSubmit = async (): Promise<void> => {
       const [error, response] = await UserService.login(loginFormData)
 
       if (!error && response) {
-        console.log(response)
+        Cookies.set('accessToken', response.access_token)
+
+        Cookies.set('refreshToken', response.refresh_token)
+
+        await getMe()
+
+        if (isAuthorized) {
+          await router.push({ name: ROUTE_NAMES.HomePage })
+        } else {
+          ElMessage({
+            type: 'error',
+            message: 'Что-то пошло не так',
+          })
+        }
       }
     }
   })
@@ -52,7 +98,12 @@ const handleFormSubmit = async (): Promise<void> => {
 .login-form {
   &__submit-button {
     :deep(.el-form-item__content) {
+      width: 100%;
       justify-content: center;
+
+      .el-button {
+        width: 100%;
+      }
     }
   }
 }

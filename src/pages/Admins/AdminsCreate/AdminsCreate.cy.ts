@@ -8,7 +8,7 @@ describe('Создание администратора', () => {
   })
 
   it('Отправляет данные на сервер', () => {
-    cy.intercept('POST', 'https://jsonplaceholder.typicode.com/users').as('createAdmin')
+    cy.intercept('POST', 'http://localhost:8000/api/v1/users').as('createAdmin')
     // Задаем данные для формы
 
     const firstName = 'Александр'

@@ -7,4 +7,5 @@ const RULES_ERRORS = {
 
 export const commonRules: Record<string, FormItemRule> = {
   required: { required: true, message: RULES_ERRORS.required, trigger: 'blur' },
+  email: { required: true, type: 'email', trigger: 'blur' },
 }

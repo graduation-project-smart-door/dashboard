@@ -20,12 +20,12 @@
     <el-form-item prop="phone">
       <el-input v-model="adminsCreateFormData.phone" placeholder="Телефон" />
     </el-form-item>
-    <el-form-item prop="phone">
+    <el-form-item prop="role">
       <el-select v-model="adminsCreateFormData.role">
-        <el-option v-for="role in roles" :key="role.value" :label="role.label" :value="role.label" />
+        <el-option v-for="role in roles" :key="role.value" :label="role.label" :value="role.value" />
       </el-select>
     </el-form-item>
-    <el-form-item prop="personId">
+    <el-form-item prop="image">
       <el-upload ref="adminsCreateUploadInstance" :auto-upload="false" :limit="1" :on-exceed="handleExceed" action="">
         <el-button type="primary">Изображение</el-button>
       </el-upload>
@@ -42,7 +42,7 @@ import { UserType } from '@/types/user.type'
 import { ElMessage, FormInstance, FormRules, genFileId, UploadInstance, UploadProps, UploadRawFile } from 'element-plus'
 import AdminsService from '@/services/AdminsService/AdminsService'
 import { camelToSnake } from '@/utils/string'
-import axios from 'axios'
+import { commonRules } from '@/constants/formRules'
 
 const roles = [
   {
@@ -67,7 +67,10 @@ const adminsCreateFormData = reactive<UserType>({
   phone: '',
 } as UserType)
 const adminsCreateFormRules = reactive<FormRules>({
-  email: [{ type: 'email', required: true, trigger: 'blur' }],
+  firstName: [commonRules.required],
+  lastName: [commonRules.required],
+  role: [commonRules.required],
+  email: [commonRules.required, commonRules.email],
 })
 
 const handleExceed: UploadProps['onExceed'] = (files) => {
@@ -98,16 +101,14 @@ const handleAdminCreate = async (): Promise<void> => {
         }
       })
 
-      await axios.post('https://jsonplaceholder.typicode.com/users', formData)
+      const [error, response] = await AdminsService.create(formData)
 
-      // const [error, response] = await AdminsService.create(formData)
-      //
-      // if (!error && response) {
-      //   ElMessage({
-      //     type: 'success',
-      //     message: 'Cool',
-      //   })
-      // }
+      if (!error && response) {
+        ElMessage({
+          type: 'success',
+          message: 'Cool',
+        })
+      }
     }
   })
 }

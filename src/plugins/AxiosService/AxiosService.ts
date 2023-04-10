@@ -12,16 +12,10 @@ export class AxiosService {
     this.axiosInstance = axios.create(config)
 
     this.axiosInstance.interceptors.request.use((config) => {
-      const token = Cookies.get('access_token')
+      const token = Cookies.get('accessToken')
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
-      }
-
-      const refreshToken = Cookies.get('refresh_token')
-
-      if (refreshToken) {
-        config.headers.refreshtoken = refreshToken
       }
 
       return config
@@ -65,7 +59,7 @@ export class AxiosService {
 }
 
 export const getBaseUrl = (): string => {
-  return import.meta.env.DEV ? '/api/' : [import.meta.env.VITE_BASE_URL, '/api/'].join('')
+  return import.meta.env.DEV ? '/api/v1' : [import.meta.env.VITE_BASE_URL, '/api/v1'].join('')
 }
 
 export const API_CONFIG: AxiosRequestConfig = {
