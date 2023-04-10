@@ -39,42 +39,37 @@
         <div class="px-20">
           <div>
             <div>
-              <span>Входов в день</span>
+              <span class="bold">Входов в день</span>
             </div>
-            <div class="-value-">
+            <div>
               <!--              <icon-template name="in" :width="16" :height="16" />-->
               <!--              <span class="-h1-">{{ statistic.inputs }}</span>-->
-              <h4>19647</h4>
+              <h5 class="color-gray">19647</h5>
             </div>
           </div>
           <div class="mt-8">
             <div>
-              <span>Выходов в день</span>
+              <span class="bold">Выходов в день</span>
             </div>
             <div class="-value-">
               <!--              <icon-template name="out" :width="16" :height="16" />-->
               <!--              <span class="-h1-">{{ statistic.outputs }}</span>-->
-              <h4>19647</h4>
+              <h5 class="color-gray">19647</h5>
             </div>
           </div>
           <div class="mt-8">
             <div>
-              <span>Среднее время</span>
+              <span class="bold">Среднее время</span>
             </div>
             <div>
               <!--  <span class="-h1-">
               {{ Math.round(statistic.average_time) > 0 ? Math.round(statistic.average_time) : 0 }} час.</span>-->
-              <h4>182</h4>
+              <h5 class="color-gray">182</h5>
             </div>
             <router-link class="link my-8 d-b" :to="{ name: ROUTE_NAMES.EventsPage }"> См. всех </router-link>
           </div>
           <span> *Данные приведены за месяц </span>
-          <!--  <span v-if="statistic.number_in_office" class="note
-          -note-nu- -light-gray-" style="margin-bottom: 20px">-->
-          <!--          *Данные приведены за {{ moment(statistic.number_in_office.month,
-           'YYYY-MM').locale('ru').format('MMMM')}}-->
-          <!--          {{moment(statistic.number_in_office.month, 'YYYY-MM').format('YYYY')}}г-->
-          <!--        </span>-->
+          <!--          <span> *Данные приведены за {{ statistic.period }} </span>-->
         </div>
       </el-col>
     </el-row>
@@ -128,7 +123,10 @@ const changeFilters = async (dates: DatesFilterType): Promise<void> => {
     }
 
     &-bottom {
+      border-radius: 20px;
       box-shadow: 0 5px 14px rgb(0 0 0 / 0.05);
+      background-color: $color--white;
+      padding: 15px;
       margin-top: 24px;
     }
   }

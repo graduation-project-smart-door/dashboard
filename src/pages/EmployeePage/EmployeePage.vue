@@ -37,8 +37,10 @@
         </div>
       </div>
 
-      <employee-update v-if="user.role === 'admin' || user.role === 'superadmin'" />
+      <!--      <employee-chart :data="employeeData.statistic" />-->
+      <employee-chart :data="[]" />
     </div>
+    <employee-update v-if="user.role === 'admin' || user.role === 'superadmin'" class="mt-12" />
   </div>
 </template>
 
@@ -55,6 +57,7 @@ const route = useRoute()
 const user = ref<Partial<ApiUserType>>({
   role: '',
 })
+const employeeData = ref<any>({} as any)
 
 onMounted(() => {
   getEmployee()

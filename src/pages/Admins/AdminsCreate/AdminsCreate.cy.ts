@@ -11,11 +11,11 @@ describe('Создание администратора', () => {
     cy.intercept('POST', 'https://jsonplaceholder.typicode.com/users').as('createAdmin')
     // Задаем данные для формы
 
-    const firstName = 'Иван'
-    const lastName = 'Иванов'
-    const patronymic = 'Иванович'
-    const email = 'admin@example.com'
-    const phone = '+79991234567'
+    const firstName = 'Александр'
+    const lastName = 'Малеев'
+    const patronymic = 'Вадимович'
+    const email = 'alexgay@im.ya'
+    const phone = '8 800 555 3535'
 
     // Используем метод cy.intercept() для перехвата запросов
 
