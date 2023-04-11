@@ -1,3 +1,7 @@
 .el-collapse {
-
+  &-item {
+    &__header {
+      padding-left: 12px;
+    }
+  }
 }

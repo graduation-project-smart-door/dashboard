@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts" setup>
+import { reactive } from 'vue'
 import { Chart, registerables } from 'chart.js'
 import { LineChart, useLineChart } from 'vue-chart-3'
-import { reactive } from 'vue'
-import { fillPlugin } from '@/utils/chart'
 import gradient from 'chartjs-plugin-gradient'
+import { fillPlugin } from '@/utils/chart'
 
 Chart.register(...registerables, gradient)
 
@@ -28,7 +28,6 @@ const chartData = reactive({
   datasets: [
     {
       label: 'Приходы и уходы',
-      data: [65, 59, 80, 81, 56, 55, 40],
       borderColor: '#596cff',
       borderWidth: 4,
       fill: true,
@@ -43,6 +42,7 @@ const chartData = reactive({
           },
         },
       },
+      data: [65, 59, 80, 81, 56, 55, 40],
     },
   ],
 })
