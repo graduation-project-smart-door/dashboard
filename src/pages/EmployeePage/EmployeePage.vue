@@ -36,9 +36,6 @@
             <div class="mt-12">
               <div class="text-md">Почта: &nbsp; <span class="bold">sample@gmail.com</span></div>
             </div>
-            <div class="mt-12">
-              <div class="text-md">Расположение: &nbsp; <span class="bold">Москва, ул. Сакамото, офис 13</span></div>
-            </div>
           </div>
         </div>
       </el-col>
