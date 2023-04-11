@@ -1,0 +1,10 @@
+.el-popover {
+  &.el-popper {
+    &.base-sidebar-mobile {
+      &__popper {
+        min-width: 100px;
+        text-align: center;
+      }
+    }
+  }
+}

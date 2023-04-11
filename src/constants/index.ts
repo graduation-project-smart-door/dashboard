@@ -15,3 +15,22 @@ export const ROLES_MAP: Record<string, string> = {
   user: 'Пользователь',
   manager: 'Менеджер',
 }
+
+export const datePeriodOptions = [
+  {
+    value: 'week',
+    label: 'Неделя',
+  },
+  {
+    value: 'month',
+    label: 'Месяц',
+  },
+  {
+    value: 'halfYear',
+    label: 'Пол года',
+  },
+  {
+    value: 'year',
+    label: 'Год',
+  },
+]

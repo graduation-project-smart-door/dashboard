@@ -1,6 +1,7 @@
 <template>
   <div class="main-layout">
-    <base-sidebar />
+    <base-sidebar v-if="!isMobile" />
+    <base-sidebar-mobile v-else />
 
     <div :class="backgroundClasses" />
 
@@ -19,8 +20,11 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { ROUTE_NAMES } from '@/constants/routeNames'
+import { useScreen } from '@/hooks/useScreen'
 
 const route = useRoute()
+
+const { isMobile } = useScreen()
 
 const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === ROUTE_NAMES.EmployeePage }])
 </script>
@@ -50,8 +54,12 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
     min-height: 100%;
     display: flex;
     justify-content: center;
-    padding: 0 20px;
+    padding: 0 0 30px;
     margin-top: 30px;
+
+    @include responsive(sm) {
+      padding: 0 20px;
+    }
 
     @include responsive(md) {
       padding: 0 50px;
@@ -68,12 +76,8 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
     }
 
     @include responsive(xs, $breakpoints-only-max) {
-      max-width: 355px;
+      max-width: 550px;
     }
-  }
-
-  @include responsive(xs) {
-    flex-direction: column-reverse;
   }
 }
 

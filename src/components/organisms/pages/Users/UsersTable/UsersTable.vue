@@ -1,11 +1,17 @@
 <template>
-  <el-table class="users-table" :data="props.users" @row-click="handleEmployeePageOpen">
-    <el-table-column label="id">
+  <el-table
+    class="users-table"
+    :data="props.users"
+    style="width: 100%"
+    :show-header="false"
+    @row-click="handleEmployeePageOpen"
+  >
+    <el-table-column label="id" min-width="80">
       <template #default="{ row }">
         {{ row.id }}
       </template>
     </el-table-column>
-    <el-table-column label="Имя">
+    <el-table-column label="Имя" min-width="120">
       <template #default="{ row }">
         {{ row.first_name }}
       </template>

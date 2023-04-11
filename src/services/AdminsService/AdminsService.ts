@@ -14,6 +14,14 @@ class AdminsService extends AxiosService {
       data,
     })
   }
+
+  getAll = async (params: any) => {
+    return this.axiosCall({
+      method: 'get',
+      url: '/admins',
+      params,
+    })
+  }
 }
 
 export default new AdminsService(API_CONFIG)

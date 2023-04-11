@@ -45,8 +45,19 @@
           <el-tab-pane label="Приходы и уходы" name="events">
             <employee-chart-events :arrival="[]" :leaving="[]" />
           </el-tab-pane>
-          <el-tab-pane label="Среднее время" name="average">
-            <employee-chart-average :data="[]" />
+          <el-tab-pane label="Количество уходоов и приходов" name="average">
+            <div class="d-f ai-c fd-c">
+              <el-select v-model="activeChartPeriod" class="employee-page__chart-period" @change="handlePeriodChange">
+                <el-option
+                  v-for="period in datePeriodOptions"
+                  :key="period.value"
+                  :label="period.label"
+                  :value="period.value"
+                />
+              </el-select>
+            </div>
+
+            <employee-chart-events-count class="mt-10" :data="[]" />
           </el-tab-pane>
         </el-tabs>
       </el-col>
@@ -65,6 +76,7 @@ import { ElMessage } from 'element-plus'
 import UserService from '@/services/UserService/UserService'
 import { ApiUserType } from '@/types/user.type'
 import { useScreen } from '@/hooks/useScreen'
+import { datePeriodOptions } from '@/constants'
 
 const { isMobileOrTablet } = useScreen()
 
@@ -76,6 +88,7 @@ const user = ref<Partial<ApiUserType>>({
 
 const employeeData = ref<any>({} as any)
 const activeChart = ref('events')
+const activeChartPeriod = ref('week')
 
 onMounted(() => {
   getEmployee()
@@ -93,6 +106,16 @@ const getEmployee = async (): Promise<void> => {
     })
   }
 }
+
+const handlePeriodChange = async (value: string): Promise<void> => {
+  const [error, response] = await UserService.getStatistic({
+    period: value,
+  })
+
+  if (!error && response) {
+    console.log('123')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -100,14 +123,18 @@ const getEmployee = async (): Promise<void> => {
   margin-top: 15px;
 
   &__chart {
+    min-height: 275px;
+    max-height: 500px;
     border-radius: 15px;
     background-color: $color--white;
     padding: 15px;
     margin-top: 24px;
 
-    &.is-guttered {
-      min-height: 475px;
-      max-height: 475px;
+    &-period {
+      :deep(.el-input__wrapper) {
+        height: 30px;
+        min-height: 30px;
+      }
     }
 
     @include responsive(md) {
@@ -116,7 +143,16 @@ const getEmployee = async (): Promise<void> => {
   }
 
   &__tabs {
-    padding: 0 20px;
+    padding: 0;
+
+    .el-tab-pane {
+      &:last-child {
+      }
+    }
+
+    @include responsive(md) {
+      padding: 0 20px;
+    }
   }
 
   @include responsive(md) {

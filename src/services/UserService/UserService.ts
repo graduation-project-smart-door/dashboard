@@ -46,6 +46,14 @@ class UserService extends AxiosService {
       url: '/users/me',
     })
   }
+
+  getStatistic = (params: unknown) => {
+    return this.axiosCall<unknown>({
+      method: 'get',
+      url: '/users/statistic',
+      params,
+    })
+  }
 }
 
 export default new UserService(API_CONFIG)

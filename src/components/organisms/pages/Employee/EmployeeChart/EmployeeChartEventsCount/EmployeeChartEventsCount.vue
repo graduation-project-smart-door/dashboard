@@ -1,9 +1,9 @@
 <template>
-  <radar-chart v-bind="radarChartProps" class="employee-chart-average" />
+  <radar-chart v-bind="radarChartProps" class="employee-chart-events-count" />
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, reactive } from 'vue'
+import { reactive } from 'vue'
 import { RadarChart, useRadarChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 
@@ -15,23 +15,33 @@ type Props = {
 
 const props = defineProps<Props>()
 
-const averageData = Array.from({ length: 12 }, () => Math.floor(Math.random() * 12))
+const averageEnterData = Array.from({ length: 7 }, () => Math.floor(Math.random() * 100))
+const averageExitData = Array.from({ length: 7 }, () => Math.floor(Math.random() * 100))
 
 const chartData = reactive({
-  labels: ['24', '2', '4', '6', '8', '10', '12', '14', '16', '18', '20', '22'],
+  labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
   datasets: [
     {
-      backgroundColor: 'rgba(2, 148, 255, 0.25)',
-      borderColor: '#0294FF',
-      pointBackgroundColor: '#0294FF',
+      label: 'Приходы',
+      backgroundColor: 'rgba(94, 114, 228, 0.3)',
+      borderColor: 'rgba(94, 114, 228, 0.5)',
+      pointBackgroundColor: 'rgba(94, 114, 228, 0.7)',
       borderWidth: 2,
-      data: averageData,
+      data: averageEnterData,
+    },
+    {
+      label: 'Уходы',
+      backgroundColor: 'rgba(121,51,241,0.38)',
+      borderColor: 'rgba(143,94,228,0.5)',
+      pointBackgroundColor: 'rgba(143,94,228,0.7)',
+      borderWidth: 2,
+      data: averageExitData,
     },
   ],
 })
 
 const calculateMaxScale = () => {
-  let maxEmployeesCount = Math.max.apply(null, averageData) + 20
+  let maxEmployeesCount = Math.max.apply(null, averageEnterData) + 20
 
   if (maxEmployeesCount % 10 !== 0) {
     maxEmployeesCount = maxEmployeesCount + 10 - (maxEmployeesCount % 10)
@@ -56,7 +66,7 @@ const options = {
       },
     },
     legend: {
-      display: false,
+      display: true,
     },
   },
   scale: {
@@ -89,12 +99,14 @@ const { radarChartProps, radarChartRef } = useRadarChart({
 </script>
 
 <style lang="scss" scoped>
-.employee-chart-average {
-  max-height: 475px;
-
+.employee-chart-events-count {
   :deep(#radar-chart) {
     width: 100% !important;
-    height: 375px !important;
+    height: 300px !important;
+
+    @include responsive(sm) {
+      height: 375px !important;
+    }
   }
 }
 </style>

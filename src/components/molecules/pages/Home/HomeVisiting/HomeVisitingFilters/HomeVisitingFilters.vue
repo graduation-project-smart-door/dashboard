@@ -3,10 +3,10 @@
     <el-col :md="6">
       <el-select v-model="selectedPeriod" class="mr-12" placeholder="Период">
         <el-option
-          v-for="item in homeVisitingFiltersOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
+          v-for="option in datePeriodOptions"
+          :key="option.value"
+          :label="option.label"
+          :value="option.value"
         />
       </el-select>
     </el-col>
@@ -26,9 +26,9 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
 // eslint-disable-next-line max-len
-import { homeVisitingFiltersOptions } from '@/components/molecules/pages/Home/HomeVisiting/HomeVisitingFilters/HomeVisitingFilters.constant'
 import { DatesFilterType } from '@/types/statistic.type'
 import moment from 'moment'
+import { datePeriodOptions } from '@/constants'
 
 type Emits = {
   (e: 'change-filters', dates: DatesFilterType): void
