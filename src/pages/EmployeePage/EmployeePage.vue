@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <el-row class="mt-48" :gutter="12">
+    <el-row class="mt-48" :gutter="isMobileOrTablet ? 0 : 12">
       <el-col :md="8">
         <div class="employee-information">
           <div>
@@ -46,7 +46,7 @@
             <employee-chart-events :arrival="[]" :leaving="[]" />
           </el-tab-pane>
           <el-tab-pane label="Среднее время" name="average">
-            <div> 123123 </div>
+            <employee-chart-average :data="[]" />
           </el-tab-pane>
         </el-tabs>
       </el-col>
@@ -64,6 +64,9 @@ import { ElMessage } from 'element-plus'
 
 import UserService from '@/services/UserService/UserService'
 import { ApiUserType } from '@/types/user.type'
+import { useScreen } from '@/hooks/useScreen'
+
+const { isMobileOrTablet } = useScreen()
 
 const route = useRoute()
 
@@ -94,20 +97,30 @@ const getEmployee = async (): Promise<void> => {
 
 <style lang="scss" scoped>
 .employee-page {
-  margin-top: 155px;
+  margin-top: 15px;
 
   &__chart {
     border-radius: 15px;
     background-color: $color--white;
     padding: 15px;
+    margin-top: 24px;
 
     &.is-guttered {
       min-height: 475px;
+      max-height: 475px;
+    }
+
+    @include responsive(md) {
+      margin-top: 0;
     }
   }
 
   &__tabs {
     padding: 0 20px;
+  }
+
+  @include responsive(md) {
+    margin-top: 155px;
   }
 }
 
@@ -132,14 +145,19 @@ const getEmployee = async (): Promise<void> => {
   }
 
   &-information {
+    width: 100%;
     height: 100%;
-    max-width: 500px;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 15px;
     background-color: $color--white;
     padding: 24px;
+
+    @include responsive(md) {
+      max-width: 500px;
+    }
   }
 }
 </style>

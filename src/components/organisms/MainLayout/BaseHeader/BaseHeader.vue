@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useUser } from '@/composables/useUser'
+import { useUser } from '@/hooks/useUser'
 
 const { isAuthorized } = useUser()
 </script>

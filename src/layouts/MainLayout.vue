@@ -31,7 +31,7 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
   min-height: 100%;
   position: relative;
   display: flex;
-  padding: 15px;
+  padding: 15px 15px 30px;
 
   &__content-wrapper {
     width: 100%;
@@ -50,11 +50,11 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
     min-height: 100%;
     display: flex;
     justify-content: center;
-    padding: 0 50px;
+    padding: 0 20px;
     margin-top: 30px;
 
-    @include responsive(xs, $breakpoints-only-max) {
-      padding: 0 10px 40px;
+    @include responsive(md) {
+      padding: 0 50px;
     }
   }
 
