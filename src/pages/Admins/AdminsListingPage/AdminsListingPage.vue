@@ -1,9 +1,11 @@
 <template>
-  <div class="events-page">
-    <events-table :events="eventsData" />
+  <div class="admins-listing-page">
+    <admins-listing-table :users="usersData" />
 
     <div class="d-f ai-c jc-sb jc-xs-c">
-      <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">Отображено 1 to 10 of 57 действий</div>
+      <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">
+        Отображено 1 to 10 of 57 администраторов
+      </div>
 
       <base-pagination
         :limit="tablePagination.limit"
@@ -16,17 +18,17 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 
-import { eventsData } from '@/pages/EventsPage/event.constant'
-import EventsService from '@/services/EventsService/EventsService'
-import { EventType } from '@/types/event.type'
+import { usersData } from '@/pages/Users/users.constant'
+import UserService from '@/services/UserService/UserService'
+import { ApiUserType } from '@/types/user.type'
 import { useScreen } from '@/hooks/useScreen'
 
 const { isMobileOrTablet } = useScreen()
 
-const events = ref<EventType[]>([])
+const users = ref<ApiUserType[]>([])
 
 const tablePagination = ref({
   limit: 10,
@@ -36,26 +38,26 @@ const tablePagination = ref({
 })
 
 onMounted(() => {
-  // getEvents()
+  // getAdmins()
 })
 
-const getEvents = async (): Promise<void> => {
-  const [error, response] = await EventsService.getAll()
+const getAdmins = async (): Promise<void> => {
+  const [error, response] = await UserService.getAll()
 
   if (!error && response) {
-    events.value = response
+    users.value = response
   }
 }
 
 const changePage = async (page: number): Promise<void> => {
   tablePagination.value.page = page
 
-  await getEvents()
+  await getAdmins()
 }
 </script>
 
 <style lang="scss" scoped>
-.events-page {
+.admins-listing-page {
   border-radius: 20px;
   background-color: $color--white;
   padding: 15px;

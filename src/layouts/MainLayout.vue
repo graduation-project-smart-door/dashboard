@@ -40,9 +40,12 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
   &__content-wrapper {
     width: 100%;
     height: 100%;
+    min-width: 0;
     display: flex;
+    flex: 1;
     flex-direction: column;
     align-items: center;
+    padding: 0 15px;
 
     @include responsive(xs) {
       height: calc(100% - 60px);
@@ -70,10 +73,6 @@ const backgroundClasses = computed(() => ['bg', { 'with-image': route.name === R
     width: 100%;
     height: fit-content;
     max-width: 100%;
-
-    @include responsive(sm, $breakpoints-only-max) {
-      max-width: 620px;
-    }
 
     @include responsive(xs, $breakpoints-only-max) {
       max-width: 550px;

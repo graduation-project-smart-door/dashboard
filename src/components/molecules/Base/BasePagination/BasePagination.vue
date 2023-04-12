@@ -2,6 +2,7 @@
   <el-pagination
     :current-page="props.page"
     :next-icon="buttonNextIcon"
+    :pager-count="isMobileOrTablet ? 5 : 7"
     :page-count="props.pageCount"
     :page-size="props.limit"
     :prev-icon="buttonPrevIcon"
@@ -15,6 +16,7 @@
 <script lang="ts" setup>
 import BaseIcon from '@/components/atoms/BaseIcon/BaseIcon.vue'
 import { h, shallowRef } from 'vue'
+import { useScreen } from '@/hooks/useScreen'
 
 type Props = {
   total?: number
@@ -35,6 +37,8 @@ const props = withDefaults(defineProps<Props>(), {
   pageCount: 100,
   total: 1000,
 })
+
+const { isMobileOrTablet } = useScreen()
 
 const buttonNextIcon = shallowRef({
   render() {

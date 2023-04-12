@@ -17,11 +17,14 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 
 <style lang="scss" scoped>
 .base-sidebar {
-  width: 250px;
-  min-width: 250px;
+  flex: 0 0 200px;
   border-radius: 12px;
   background-color: $color--white;
   padding: 8px;
-  margin: 16px 30px 0 16px;
+  margin: 16px 0 0 16px;
+
+  @include responsive(md) {
+    flex: 0 0 250px;
+  }
 }
 </style>

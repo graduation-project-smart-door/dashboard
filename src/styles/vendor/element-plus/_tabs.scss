@@ -44,7 +44,6 @@
       @include responsive(xs, $breakpoints-only-max) {
         display: flex;
         justify-content: center;
-        padding: 20px 0;
       }
     }
   }

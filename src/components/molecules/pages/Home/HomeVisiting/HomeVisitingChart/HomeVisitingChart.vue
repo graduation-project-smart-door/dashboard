@@ -8,6 +8,7 @@ import { Chart, registerables } from 'chart.js'
 import { LineChart, useLineChart } from 'vue-chart-3'
 import gradient from 'chartjs-plugin-gradient'
 import { fillPlugin } from '@/utils/chart'
+import { useScreen } from '@/hooks/useScreen'
 
 Chart.register(...registerables, gradient)
 
@@ -21,7 +22,15 @@ const props = withDefaults(defineProps<Props>(), {
   leaving: () => [],
 })
 
-const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье']
+const { isMobile } = useScreen()
+
+const daysOfWeek = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'].map((day) => {
+  if (isMobile.value && day === 'Понедельник') {
+    return 'Пн'
+  }
+
+  return day
+})
 
 const chartData = reactive({
   labels: daysOfWeek,
@@ -94,7 +103,7 @@ const options = {
     },
     x: {
       ticks: {
-        padding: 28,
+        padding: isMobile.value ? 12 : 24,
         color: '#8392AB',
       },
       grid: {

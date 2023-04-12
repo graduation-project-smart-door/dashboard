@@ -61,7 +61,7 @@ const router = createRouter({
         {
           path: '/admins/listing',
           name: ROUTE_NAMES.AdminsListingPage,
-          component: () => import('@/pages/Admins/AdminsListing/AdminsListing.vue'),
+          component: () => import('@/pages/Admins/AdminsListingPage/AdminsListingPage.vue'),
           meta: {
             breadcrumb: [{ title: 'Все администраторы', name: '/', isLink: false }],
           },

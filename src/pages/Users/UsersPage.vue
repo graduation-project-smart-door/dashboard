@@ -2,8 +2,8 @@
   <div class="users-page">
     <users-table :users="usersData" />
 
-    <div class="d-f ai-c jc-sb">
-      <div class="text-md color-primary-secondary">Отображено 1 to 10 of 57 пользователей</div>
+    <div class="d-f ai-c jc-sb jc-xs-c">
+      <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">Отображено 1 to 10 of 57 пользователей</div>
 
       <base-pagination
         :limit="tablePagination.limit"
@@ -23,6 +23,9 @@ import { usersData } from '@/pages/Users/users.constant'
 import UserService from '@/services/UserService/UserService'
 import { ApiUserType } from '@/types/user.type'
 import BasePagination from '@/components/molecules/Base/BasePagination/BasePagination.vue'
+import { useScreen } from '@/hooks/useScreen'
+
+const { isMobileOrTablet } = useScreen()
 
 const users = ref<ApiUserType[]>([])
 

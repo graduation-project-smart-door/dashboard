@@ -17,6 +17,7 @@
 <style lang="scss" scoped>
 .home-last-visit-card {
   width: 235px;
+  min-width: 190px;
   border-radius: 20px;
   background-color: $color--white;
   padding: 16px 24px;

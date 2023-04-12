@@ -1,11 +1,12 @@
 <template>
   <div class="base-sidebar-mobile">
+    <!--    TODO: После перехода по страницам не закрывается popover-->
     <nav class="base-sidebar-mobile__content">
       <ul class="d-f ai-c jc-sb">
         <li>
           <el-popover
             :show-arrow="false"
-            :width="100"
+            :width="120"
             placement="top"
             popper-class="base-sidebar-mobile__popper"
             trigger="click"
@@ -14,6 +15,9 @@
               <base-icon name="pages" class="icon-24" />
             </template>
             <ul>
+              <li>
+                <router-link :to="{ name: ROUTE_NAMES.UsersPage }"> Пользователи </router-link>
+              </li>
               <li>
                 <router-link :to="{ name: ROUTE_NAMES.EventsPage }"> Действия </router-link>
               </li>
@@ -41,6 +45,12 @@
               </li>
             </ul>
           </el-popover>
+        </li>
+
+        <li>
+          <router-link :to="{ name: ROUTE_NAMES.HomePage }">
+            <base-icon name="logo" class="icon-18" />
+          </router-link>
         </li>
 
         <li>
@@ -106,6 +116,10 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 
   &__content {
     padding: 8px 12px;
+  }
+
+  .base-icon {
+    color: $color--primary-secondary;
   }
 }
 </style>

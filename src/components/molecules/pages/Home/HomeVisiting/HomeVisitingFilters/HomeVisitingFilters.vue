@@ -11,7 +11,7 @@
       </el-select>
     </el-col>
 
-    <el-col :md="18">
+    <el-col :xs="0" :md="18">
       <el-date-picker
         v-model="selectedDatePeriod"
         type="daterange"

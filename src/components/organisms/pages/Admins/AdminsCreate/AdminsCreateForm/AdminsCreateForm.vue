@@ -20,11 +20,6 @@
     <el-form-item prop="phone">
       <el-input v-model="adminsCreateFormData.phone" placeholder="Телефон" />
     </el-form-item>
-    <el-form-item prop="role">
-      <el-select v-model="adminsCreateFormData.role">
-        <el-option v-for="role in roles" :key="role.value" :label="role.label" :value="role.value" />
-      </el-select>
-    </el-form-item>
     <el-form-item prop="image">
       <el-upload ref="adminsCreateUploadInstance" :auto-upload="false" :limit="1" :on-exceed="handleExceed" action="">
         <el-button type="primary">Изображение</el-button>
@@ -44,17 +39,6 @@ import AdminsService from '@/services/AdminsService/AdminsService'
 import { camelToSnake } from '@/utils/string'
 import { commonRules } from '@/constants/formRules'
 
-const roles = [
-  {
-    label: 'Админ',
-    value: 'admin',
-  },
-  {
-    label: 'Суперадмин',
-    value: 'superadmin',
-  },
-]
-
 const adminsCreateFormInstance = ref<FormInstance>()
 const adminsCreateUploadInstance = ref<UploadInstance>()
 
@@ -66,6 +50,7 @@ const adminsCreateFormData = reactive<UserType>({
   image: null,
   phone: '',
 } as UserType)
+
 const adminsCreateFormRules = reactive<FormRules>({
   firstName: [commonRules.required],
   lastName: [commonRules.required],

@@ -15,6 +15,11 @@
         {{ row.last_name }}
       </template>
     </el-table-column>
+    <el-table-column label="Время">
+      <template #default="{ row }">
+        {{ row.time }}
+      </template>
+    </el-table-column>
     <el-table-column label="Статус">
       <template #default="{ row }">
         <base-status :status="row.status" />

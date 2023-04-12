@@ -1,5 +1,5 @@
 <template>
-  <div ref="player" style="width: 1000px; height: 600px" />
+  <div ref="player" class="door-player" />
 </template>
 
 <script lang="ts" setup>
@@ -30,3 +30,9 @@ defineExpose({
   player,
 })
 </script>
+
+<style lang="scss" scoped>
+.door-player {
+  height: 600px;
+}
+</style>

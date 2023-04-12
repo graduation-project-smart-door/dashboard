@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
-    <div class="d-f ai-c jc-sb">
-      <home-last-visit-card v-for="(_, index) in [...Array(6)].map((x) => 0)" :key="index" />
+    <div class="home-page__cards">
+      <home-last-visit-card v-for="(_, index) in [...Array(5)].map((x) => 0)" :key="index" class="m-4" />
     </div>
 
     <el-row class="home-page__content-top">
@@ -10,7 +10,7 @@
 
         <home-visiting-chart :arrival="[]" :leaving="[]" />
       </el-col>
-      <el-col :md="8">
+      <el-col :span="0" :md="8">
         <div class="home-page__image-wrapper">
           <div class="home-page__image" />
           <div class="home-page__image-content-wrapper">
@@ -28,14 +28,14 @@
     </el-row>
 
     <el-row class="home-page__content-bottom" align="middle">
-      <el-col :xs="24" :sm="24" :lg="18">
+      <el-col :span="24" :md="18">
         <el-row class="h-100 average-time">
           <el-col :span="24">
             <home-average-chart :data="[]" />
           </el-col>
         </el-row>
       </el-col>
-      <el-col :xs="0" :sm="0" :lg="6">
+      <el-col :xs="0" :sm="0" :md="6">
         <div class="px-20">
           <div>
             <div>
@@ -92,6 +92,21 @@ const changeFilters = async (dates: DatesFilterType): Promise<void> => {
 
 <style lang="scss" scoped>
 .home-page {
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    @include responsive(sm) {
+      justify-content: space-between;
+    }
+
+    @include responsive(sm, $breakpoints-only-max) {
+      display: none;
+    }
+  }
+
   &__image {
     width: 100%;
     height: 100%;

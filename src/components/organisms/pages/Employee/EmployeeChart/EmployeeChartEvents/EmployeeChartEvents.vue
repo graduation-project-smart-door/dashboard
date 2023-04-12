@@ -164,3 +164,22 @@ const { lineChartProps, lineChartRef } = useLineChart({
   plugins: [fillPlugin],
 })
 </script>
+
+<style lang="scss" scoped>
+.employee-chart-events {
+  margin-top: 20px;
+
+  :deep(#line-chart) {
+    width: 100% !important;
+    height: 300px !important;
+
+    @include responsive(sm) {
+      height: 375px !important;
+    }
+  }
+
+  @include responsive(sm) {
+    margin-top: 0;
+  }
+}
+</style>

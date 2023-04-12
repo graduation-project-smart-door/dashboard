@@ -3,7 +3,7 @@
     class="users-table"
     :data="props.users"
     style="width: 100%"
-    :show-header="false"
+    scrollbar-always-on
     @row-click="handleEmployeePageOpen"
   >
     <el-table-column label="id" min-width="80">

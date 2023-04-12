@@ -6,4 +6,5 @@ export type EventType = {
 
   first_name: string
   last_name: string
+  time: string
 }
