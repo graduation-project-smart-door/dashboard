@@ -2,6 +2,7 @@
   <div class="events-page">
     <events-table :events="eventsData" />
 
+    //TODO: Вынести пагинацию в отдельный компонент и передавать текст, чтобы выводить количество чего-либо
     <div class="d-f ai-c jc-sb jc-xs-c">
       <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">Отображено 1 to 10 of 57 действий</div>
 
