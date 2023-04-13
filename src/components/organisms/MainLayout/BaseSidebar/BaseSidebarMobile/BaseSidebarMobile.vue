@@ -1,50 +1,67 @@
 <template>
   <div class="base-sidebar-mobile">
-    <!--    TODO: После перехода по страницам не закрывается popover-->
     <nav class="base-sidebar-mobile__content">
       <ul class="d-f ai-c jc-sb">
         <li>
-          <el-popover
-            :show-arrow="false"
-            :width="120"
-            placement="top"
-            popper-class="base-sidebar-mobile__popper"
-            trigger="click"
-          >
-            <template #reference>
-              <base-icon name="pages" class="icon-24" />
+          <el-dropdown ref="pagesDropdownInstance" trigger="contextmenu" class="dropdown">
+            <base-icon
+              name="pages"
+              class="icon-24"
+              @click="handleDropdownVisibleToggle(true, 'pagesDropdownInstance')"
+            />
+
+            <template #dropdown>
+              <ul>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.UsersPage }"
+                    @click="handleDropdownVisibleToggle(false, 'pagesDropdownInstance')"
+                  >
+                    Пользователи
+                  </router-link>
+                </li>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.EventsPage }"
+                    @click="handleDropdownVisibleToggle(false, 'pagesDropdownInstance')"
+                  >
+                    Действия
+                  </router-link>
+                </li>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.EmployeePage, params: { id: '1' } }"
+                    @click="handleDropdownVisibleToggle(false, 'pagesDropdownInstance')"
+                  >
+                    Работник
+                  </router-link>
+                </li>
+              </ul>
             </template>
-            <ul>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.UsersPage }"> Пользователи </router-link>
-              </li>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.EventsPage }"> Действия </router-link>
-              </li>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.EmployeePage, params: { id: '1' } }"> Работник </router-link>
-              </li>
-            </ul>
-          </el-popover>
+          </el-dropdown>
         </li>
 
         <li>
-          <el-popover
-            :show-arrow="false"
-            :width="100"
-            placement="top"
-            popper-class="base-sidebar-mobile__popper"
-            trigger="click"
-          >
-            <template #reference>
-              <base-icon name="microcontroller" class="icon-24" />
+          <el-dropdown ref="microcontrollerDropdownInstance" trigger="contextmenu" class="dropdown">
+            <base-icon
+              name="microcontroller"
+              class="icon-24"
+              @click="handleDropdownVisibleToggle(true, 'microcontrollerDropdownInstance')"
+            />
+
+            <template #dropdown>
+              <ul>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.ControllerPage }"
+                    @click="handleDropdownVisibleToggle(false, 'microcontrollerDropdownInstance')"
+                  >
+                    Статистика
+                  </router-link>
+                </li>
+              </ul>
             </template>
-            <ul>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.ControllerPage }"> Статистика </router-link>
-              </li>
-            </ul>
-          </el-popover>
+          </el-dropdown>
         </li>
 
         <li>
@@ -54,44 +71,53 @@
         </li>
 
         <li>
-          <el-popover
-            :show-arrow="false"
-            :width="100"
-            placement="top"
-            popper-class="base-sidebar-mobile__popper"
-            trigger="click"
-          >
-            <template #reference>
-              <base-icon name="door" class="icon-24" />
+          <el-dropdown ref="doorDropdownInstance" trigger="contextmenu" class="dropdown">
+            <base-icon name="door" class="icon-24" @click="handleDropdownVisibleToggle(true, 'doorDropdownInstance')" />
+
+            <template #dropdown>
+              <ul>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.DoorPage }"
+                    @click="handleDropdownVisibleToggle(false, 'doorDropdownInstance')"
+                  >
+                    Статистика двери
+                  </router-link>
+                </li>
+              </ul>
             </template>
-            <ul>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.DoorPage }"> Статистика двери </router-link>
-              </li>
-            </ul>
-          </el-popover>
+          </el-dropdown>
         </li>
 
         <li>
-          <el-popover
-            :show-arrow="false"
-            :width="200"
-            placement="top"
-            popper-class="base-sidebar-mobile__popper"
-            trigger="click"
-          >
-            <template #reference>
-              <base-icon name="users" class="icon-24" />
+          <el-dropdown ref="adminsDropdownInstance" trigger="contextmenu" class="dropdown">
+            <base-icon
+              name="users"
+              class="icon-24"
+              @click="handleDropdownVisibleToggle(true, 'adminsDropdownInstance')"
+            />
+
+            <template #dropdown>
+              <ul>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.AdminsListingPage }"
+                    @click="handleDropdownVisibleToggle(false, 'adminsDropdownInstance')"
+                  >
+                    Все администраторы
+                  </router-link>
+                </li>
+                <li class="dropdown__item">
+                  <router-link
+                    :to="{ name: ROUTE_NAMES.AdminsCreatePage }"
+                    @click="handleDropdownVisibleToggle(false, 'adminsDropdownInstance')"
+                  >
+                    Создать администратора
+                  </router-link>
+                </li>
+              </ul>
             </template>
-            <ul>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.AdminsListingPage }"> Все администраторы </router-link>
-              </li>
-              <li>
-                <router-link :to="{ name: ROUTE_NAMES.AdminsCreatePage }"> Создать администратора </router-link>
-              </li>
-            </ul>
-          </el-popover>
+          </el-dropdown>
         </li>
       </ul>
     </nav>
@@ -99,7 +125,31 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+import { ElDropdown } from 'element-plus'
+
 import { ROUTE_NAMES } from '@/constants/routeNames'
+
+const pagesDropdownInstance = ref<typeof ElDropdown>()
+const microcontrollerDropdownInstance = ref<typeof ElDropdown>()
+const doorDropdownInstance = ref<typeof ElDropdown>()
+const adminsDropdownInstance = ref<typeof ElDropdown>()
+
+const handleDropdownVisibleToggle = (state: boolean, instance: string): void => {
+  const instanceMap = {
+    pagesDropdownInstance: pagesDropdownInstance.value,
+    microcontrollerDropdownInstance: microcontrollerDropdownInstance.value,
+    doorDropdownInstance: doorDropdownInstance.value,
+    adminsDropdownInstance: adminsDropdownInstance.value,
+  } as Record<string, typeof ElDropdown>
+
+  const currentInstance = instanceMap[instance]
+
+  if (!currentInstance) return
+
+  state ? currentInstance.handleOpen() : currentInstance.handleClose()
+}
 </script>
 
 <style lang="scss" scoped>
@@ -120,6 +170,12 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 
   .base-icon {
     color: $color--primary-secondary;
+  }
+}
+
+.dropdown {
+  &__item {
+    padding: 8px 12px;
   }
 }
 </style>

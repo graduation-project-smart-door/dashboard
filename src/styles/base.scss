@@ -12,6 +12,12 @@ body {
   background-color: $color--gray-200;
 }
 
+* {
+  &:focus-visible {
+
+  }
+}
+
 .h1, h1 {
   @include text-h1;
 }
