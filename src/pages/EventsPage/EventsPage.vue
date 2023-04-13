@@ -2,18 +2,14 @@
   <div class="events-page">
     <events-table :events="eventsData" />
 
-    //TODO: Вынести пагинацию в отдельный компонент и передавать текст, чтобы выводить количество чего-либо
-    <div class="d-f ai-c jc-sb jc-xs-c">
-      <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">Отображено 1 to 10 of 57 действий</div>
-
-      <base-pagination
-        :limit="tablePagination.limit"
-        :page="tablePagination.page"
-        :page-count="tablePagination.pageCount"
-        :total="tablePagination.total"
-        @change-page="changePage"
-      />
-    </div>
+    <base-pagination
+      text="Отображено 1 to 10 of 57 действий"
+      :limit="tablePagination.limit"
+      :page="tablePagination.page"
+      :page-count="tablePagination.pageCount"
+      :total="tablePagination.total"
+      @change-page="changePage"
+    />
   </div>
 </template>
 
@@ -23,9 +19,6 @@ import { onMounted, ref } from 'vue'
 import { eventsData } from '@/pages/EventsPage/event.constant'
 import EventsService from '@/services/EventsService/EventsService'
 import { EventType } from '@/types/event.type'
-import { useScreen } from '@/hooks/useScreen'
-
-const { isMobileOrTablet } = useScreen()
 
 const events = ref<EventType[]>([])
 

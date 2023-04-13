@@ -1,16 +1,22 @@
 <template>
-  <el-pagination
-    :current-page="props.page"
-    :next-icon="buttonNextIcon"
-    :pager-count="isMobileOrTablet ? 5 : 7"
-    :page-count="props.pageCount"
-    :page-size="props.limit"
-    :prev-icon="buttonPrevIcon"
-    :total="props.total"
-    class="mt-12"
-    layout="prev, pager, next"
-    @current-change="handleCurrentChange"
-  />
+  <div class="base-pagination">
+    <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">
+      {{ props.text }}
+    </div>
+
+    <el-pagination
+      :current-page="props.page"
+      :next-icon="buttonNextIcon"
+      :pager-count="isMobileOrTablet ? 5 : 7"
+      :page-count="props.pageCount"
+      :page-size="props.limit"
+      :prev-icon="buttonPrevIcon"
+      :total="props.total"
+      class="mt-12"
+      layout="prev, pager, next"
+      @current-change="handleCurrentChange"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -23,6 +29,7 @@ type Props = {
   page?: number
   limit?: number
   pageCount: number
+  text: string
 }
 
 type Emits = {
@@ -61,3 +68,15 @@ const handleCurrentChange = (currentPage: number): void => {
   emits('change-page', currentPage)
 }
 </script>
+
+<style lang="scss" scoped>
+.base-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include responsive(xs) {
+    justify-content: center;
+  }
+}
+</style>

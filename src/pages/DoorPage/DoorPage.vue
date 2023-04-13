@@ -7,7 +7,13 @@
     </el-col>
 
     <el-col :span="24" :md="12" class="mt-24 mt-md-0">
-      <div class="door-page__content h-100">
+      <div class="door-page__content">
+        <door-player class="w-100" />
+      </div>
+    </el-col>
+
+    <el-col :span="24" class="mt-12">
+      <div class="door-page__content">
         <h3>Статистика</h3>
 
         <div class="mt-12">

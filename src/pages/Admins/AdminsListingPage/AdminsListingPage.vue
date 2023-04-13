@@ -2,19 +2,14 @@
   <div class="admins-listing-page">
     <admins-listing-table :users="usersData" />
 
-    <div class="d-f ai-c jc-sb jc-xs-c">
-      <div v-if="!isMobileOrTablet" class="text-md color-primary-secondary">
-        Отображено 1 to 10 of 57 администраторов
-      </div>
-
-      <base-pagination
-        :limit="tablePagination.limit"
-        :page="tablePagination.page"
-        :page-count="tablePagination.pageCount"
-        :total="tablePagination.total"
-        @change-page="changePage"
-      />
-    </div>
+    <base-pagination
+      text="Отображено 1 to 10 of 57 администраторов"
+      :limit="tablePagination.limit"
+      :page="tablePagination.page"
+      :page-count="tablePagination.pageCount"
+      :total="tablePagination.total"
+      @change-page="changePage"
+    />
   </div>
 </template>
 
@@ -24,9 +19,6 @@ import { onMounted, ref } from 'vue'
 import { usersData } from '@/pages/Users/users.constant'
 import UserService from '@/services/UserService/UserService'
 import { ApiUserType } from '@/types/user.type'
-import { useScreen } from '@/hooks/useScreen'
-
-const { isMobileOrTablet } = useScreen()
 
 const users = ref<ApiUserType[]>([])
 
