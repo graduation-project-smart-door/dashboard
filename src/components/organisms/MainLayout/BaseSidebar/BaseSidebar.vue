@@ -17,7 +17,7 @@ import { ROUTE_NAMES } from '@/constants/routeNames'
 
 <style lang="scss" scoped>
 .base-sidebar {
-  flex: 0 0 200px;
+  flex: 0 0 220px;
   border-radius: 12px;
   background-color: $color--white;
   padding: 8px;

@@ -123,7 +123,7 @@ const handlePeriodChange = async (value: string): Promise<void> => {
   margin-top: 15px;
 
   &__chart {
-    height: 415px;
+    height: 485px;
     border-radius: 15px;
     background-color: $color--white;
     padding: 15px;
@@ -134,6 +134,10 @@ const handlePeriodChange = async (value: string): Promise<void> => {
         height: 30px;
         min-height: 30px;
       }
+    }
+
+    @include responsive(xs) {
+      height: 435px;
     }
 
     @include responsive(md) {
