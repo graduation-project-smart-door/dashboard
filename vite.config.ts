@@ -82,6 +82,7 @@ export default defineConfig(({ mode }) => {
           target: env.VITE_BASE_URL,
           changeOrigin: true,
           secure: false,
+          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },

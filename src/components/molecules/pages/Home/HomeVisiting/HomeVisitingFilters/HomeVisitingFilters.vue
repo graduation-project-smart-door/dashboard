@@ -1,6 +1,6 @@
 <template>
   <el-row class="home-visiting-filters">
-    <el-col :md="6">
+    <el-col :md="6" class="d-f jc-c d-md-b">
       <el-select v-model="selectedPeriod" class="mr-12" placeholder="Период">
         <el-option
           v-for="option in datePeriodOptions"
@@ -11,7 +11,7 @@
       </el-select>
     </el-col>
 
-    <el-col :xs="0" :md="18">
+    <el-col :xs="0" :md="18" class="mt-12 mt-md-0 d-f jc-c jc-md-fe">
       <el-date-picker
         v-model="selectedDatePeriod"
         type="daterange"
