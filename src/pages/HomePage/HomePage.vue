@@ -4,6 +4,10 @@
       <home-last-visit-card v-for="(_, index) in [...Array(5)].map((x) => 0)" :key="index" class="m-4" />
     </div>
 
+    <transition-group tag="ul" name="fade" class="d-f ai-c">
+      <div v-for="(card, index) in users" :key="index" class="card">{{ card.value }}</div>
+    </transition-group>
+
     <el-row class="home-page__content-top">
       <el-col :md="16" class="home-page__visiting-chart-wrapper">
         <home-visiting-filters @change-filters="changeFilters" />
@@ -77,9 +81,19 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
 import { ROUTE_NAMES } from '@/constants/routeNames'
 import StatisticService from '@/services/StatisticService/StatisticService'
+import EventsServiceSse from '@/services/EventsService/EventsService.sse'
+
 import { DatesFilterType } from '@/types/statistic.type'
+
+const users = ref<any>([])
+
+onMounted(() => {
+  // getSseEvents()
+})
 
 const changeFilters = async (dates: DatesFilterType): Promise<void> => {
   const [error, response] = await StatisticService.getVisitingChart(dates)
@@ -87,6 +101,24 @@ const changeFilters = async (dates: DatesFilterType): Promise<void> => {
   if (!error && response) {
     console.log('success')
   }
+}
+
+// const getSseEvents = (): void => {
+//   console.log(EventsServiceSse.getEvents())
+// }
+
+const getSseEvents = async (): Promise<void> => {
+  const eventSource = new EventSource('/api/coins')
+
+  eventSource.addEventListener('message', ({ data }) => {
+    const _data = JSON.parse(data)
+
+    users.value.push(_data)
+
+    if (users.value >= 5) {
+      users.value.shift()
+    }
+  })
 }
 </script>
 
@@ -151,5 +183,28 @@ const changeFilters = async (dates: DatesFilterType): Promise<void> => {
     border-radius: 20px;
     background-color: $color--white;
   }
+}
+
+.card {
+  width: 250px;
+  height: 250px;
+  background-color: $color--primary-secondary;
+  margin-right: 12px;
+}
+
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  transform: scaleX(0.01) translate(30px, 0);
+  opacity: 0;
+}
+
+.fade-leave-active {
+  position: absolute;
 }
 </style>

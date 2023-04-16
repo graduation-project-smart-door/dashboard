@@ -19,6 +19,7 @@ import { onMounted, ref } from 'vue'
 import { eventsData } from '@/pages/EventsPage/event.constant'
 import EventsService from '@/services/EventsService/EventsService'
 import { EventType } from '@/types/event.type'
+import EventsServiceSse from '@/services/EventsService/EventsService.sse'
 
 const events = ref<EventType[]>([])
 
