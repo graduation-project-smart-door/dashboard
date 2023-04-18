@@ -1,0 +1,1 @@
+const e={required:"Это поле обязательно для заполнения",password:"Пароль должен быть не менее 6 символов длиной"},r={required:{required:!0,message:e.required,trigger:"blur"},email:{required:!0,type:"email",trigger:"blur"}};export{r as c};

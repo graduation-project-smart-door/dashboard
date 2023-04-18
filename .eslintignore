@@ -6,3 +6,4 @@ dist/
 .md
 auto-imports.d.ts
 components.d.ts
+dev-dist/

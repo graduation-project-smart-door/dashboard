@@ -1,6 +1,7 @@
 # Folders
 node_modules
 /.dist
+/dev-dist
 
 # env files
 .env

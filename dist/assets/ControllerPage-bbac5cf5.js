@@ -1,0 +1,1 @@
+import{openBlock as e,createElementBlock as o,createElementVNode as t}from"vue";import{_ as r}from"./index-4aeae6ce.js";import"./vendor-066c2b0d.js";const c={},n={class:"controller-page"},s=t("h1",null,"Controller",-1),_=[s];function l(a,i){return e(),o("div",n,_)}const p=r(c,[["render",l]]);export{p as default};

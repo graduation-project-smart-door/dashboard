@@ -1,0 +1,1 @@
+import{resolveComponent as t,openBlock as o,createElementBlock as _,createVNode as c}from"vue";import{_ as r}from"./index-4aeae6ce.js";import"./vendor-066c2b0d.js";const s={},n={class:"guest-layout"};function a(u,p){const e=t("router-view");return o(),_("div",n,[c(e)])}const l=r(s,[["render",a],["__scopeId","data-v-09abf548"]]);export{l as default};

@@ -4,13 +4,15 @@ import StyleLintPlugin from 'vite-plugin-stylelint'
 import VitePluginFonts from 'vite-plugin-fonts'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
+import { splitVendorChunkPlugin } from 'vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import path from 'path'
+import path, { resolve } from 'path'
+import { VitePWA } from 'vite-plugin-pwa'
 
 const styleLintConfig = StyleLintPlugin({
   files: ['src/**/*.{vue,scss}'],
@@ -51,6 +53,36 @@ const svgIconsConfig = createSvgIconsPlugin({
   customDomId: '__svg__icons__dom__',
 })
 
+const pwaPluginConfig = VitePWA({
+  registerType: 'autoUpdate',
+  workbox: {
+    globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+    sourcemap: true,
+  },
+  devOptions: {
+    enabled: true,
+  },
+  includeAssets: ['favicon-16x16.ico', 'apple-icon-180x180.png'],
+  manifest: {
+    name: 'Админ панель',
+    short_name: 'Админка',
+    description: 'Админ панель для контроля посещаемости',
+    theme_color: '#fff',
+    icons: [
+      {
+        src: 'android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: 'android-chrome-256x256.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  },
+})
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') as ImportMetaEnv
@@ -63,7 +95,17 @@ export default defineConfig(({ mode }) => {
         inline: ['element-plus'],
       },
     },
-    plugins: [vue(), styleLintConfig, eslintConfig, fontsConfig, autoImportConfig, componentsConfig, svgIconsConfig],
+    plugins: [
+      vue(),
+      styleLintConfig,
+      eslintConfig,
+      fontsConfig,
+      autoImportConfig,
+      componentsConfig,
+      svgIconsConfig,
+      pwaPluginConfig,
+      splitVendorChunkPlugin(),
+    ],
     css: {
       preprocessorOptions: {
         scss: {
@@ -74,6 +116,28 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
+    build: {
+      manifest: true,
+      dashboard: {
+        // Could also be a dictionary or array of multiple entry points
+        entry: resolve(__dirname, 'dashboard/main.js'),
+        name: 'dashboard',
+        // the proper extensions will be added
+        fileName: 'dashboard',
+      },
+      rollupOptions: {
+        // make sure to externalize deps that shouldn't be bundled
+        // into your library
+        external: ['vue'],
+        output: {
+          // Provide global variables to use in the UMD build
+          // for externalized deps
+          globals: {
+            vue: 'Vue',
+          },
+        },
       },
     },
     server: {

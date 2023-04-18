@@ -11,7 +11,7 @@
       </el-select>
     </el-col>
 
-    <el-col :xs="0" :md="18" class="mt-12 mt-md-0 d-f jc-c jc-md-fe">
+    <el-col v-if="!isMobile" :md="18" class="mt-12 mt-md-0 d-f jc-c jc-md-fe">
       <el-date-picker
         v-model="selectedDatePeriod"
         type="daterange"
@@ -25,16 +25,21 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue'
-// eslint-disable-next-line max-len
-import { DatesFilterType } from '@/types/statistic.type'
 import moment from 'moment'
+
 import { datePeriodOptions } from '@/constants'
+
+import { useScreen } from '@/hooks/useScreen'
+
+import { DatesFilterType } from '@/types/statistic.type'
 
 type Emits = {
   (e: 'change-filters', dates: DatesFilterType): void
 }
 
 const emits = defineEmits<Emits>()
+
+const { isMobile } = useScreen()
 
 const selectedPeriod = ref('week')
 const defaultDatePeriod = ref<Date[]>([new Date(), new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000)])
