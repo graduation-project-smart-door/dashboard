@@ -14,7 +14,7 @@ jobs:
 
       - name: Build container
         run: |
-          docker build -f containers/app/Dockerfile -t {{ secrets.FRONT_CONTAINER_NAME ]} .
+          docker build -f containers/app/Dockerfile -t ${{ secrets.FRONT_CONTAINER_NAME ]} .
 
   deploy:
     runs-on: ubuntu-latest
