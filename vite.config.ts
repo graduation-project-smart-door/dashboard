@@ -95,13 +95,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') as ImportMetaEnv
 
   return {
-    test: {
-      globals: true,
-      environment: 'jsdom',
-      deps: {
-        inline: ['element-plus'],
-      },
-    },
     plugins: [
       vue(),
       styleLintConfig,
