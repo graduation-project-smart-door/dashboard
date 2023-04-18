@@ -46,6 +46,6 @@ npm run lint
 ```
 ### Run with Docker & Nginx
 ```sh
-docker build -f .\containers\Dockerfile -t door-frontend .
+docker build -f .\containers\app\Dockerfile -t door-frontend .
 docker run -d -p 4800:80 door-frontend
 ```
