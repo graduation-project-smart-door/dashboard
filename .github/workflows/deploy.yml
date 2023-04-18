@@ -27,6 +27,8 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          username: ${{ secrets.SSH_USER }}
           script: |
             docker stop ${{ secrets.FRONT_CONTAINER_NAME }}
             docker rm ${{ secrets.FRONT_CONTAINER_NAME }}
