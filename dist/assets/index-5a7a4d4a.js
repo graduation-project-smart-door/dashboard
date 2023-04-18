@@ -1,1 +1,0 @@
-const a={admin:"Админ",user:"Пользователь",manager:"Менеджер"},e=[{value:"week",label:"Неделя"},{value:"month",label:"Месяц"},{value:"halfYear",label:"Пол года"},{value:"year",label:"Год"}];export{a as R,e as d};

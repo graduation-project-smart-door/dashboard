@@ -1,7 +1,10 @@
 # Folders
 node_modules
-/.dist
-/dev-dist
+node_modules/
+dev-dist/
+public/
+build/
+dist/
 
 # env files
 .env

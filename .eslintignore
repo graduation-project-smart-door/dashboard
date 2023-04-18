@@ -1,9 +1,10 @@
 .gitignore
 
 node_modules/
+dev-dist/
 public/
+build/
 dist/
 .md
 auto-imports.d.ts
 components.d.ts
-dev-dist/

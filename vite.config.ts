@@ -11,7 +11,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import path, { resolve } from 'path'
+import path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const styleLintConfig = StyleLintPlugin({
@@ -55,19 +55,22 @@ const svgIconsConfig = createSvgIconsPlugin({
 
 const pwaPluginConfig = VitePWA({
   registerType: 'autoUpdate',
-  workbox: {
-    globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-    sourcemap: true,
-  },
+  outDir: 'dist',
   devOptions: {
     enabled: true,
+  },
+  workbox: {
+    globDirectory: 'build/',
+    globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,ttf}'],
+    sourcemap: true,
+    swDest: 'build/sw.js',
   },
   includeAssets: ['favicon-16x16.ico', 'apple-icon-180x180.png'],
   manifest: {
     name: 'Админ панель',
     short_name: 'Админка',
     description: 'Админ панель для контроля посещаемости',
-    theme_color: '#fff',
+    theme_color: '#e2e2e2',
     icons: [
       {
         src: 'android-chrome-192x192.png',
@@ -76,6 +79,11 @@ const pwaPluginConfig = VitePWA({
       },
       {
         src: 'android-chrome-256x256.png',
+        sizes: '256x256',
+        type: 'image/png',
+      },
+      {
+        src: 'android-chrome-512x512.png',
         sizes: '512x512',
         type: 'image/png',
       },
@@ -83,7 +91,6 @@ const pwaPluginConfig = VitePWA({
   },
 })
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') as ImportMetaEnv
 
@@ -119,21 +126,14 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
+      cssCodeSplit: true,
       manifest: true,
-      dashboard: {
-        // Could also be a dictionary or array of multiple entry points
-        entry: resolve(__dirname, 'dashboard/main.js'),
-        name: 'dashboard',
-        // the proper extensions will be added
-        fileName: 'dashboard',
-      },
+      sourcemap: true,
+      target: 'es2017',
+      outDir: 'build',
       rollupOptions: {
-        // make sure to externalize deps that shouldn't be bundled
-        // into your library
-        external: ['vue'],
+        external: ['@vue'],
         output: {
-          // Provide global variables to use in the UMD build
-          // for externalized deps
           globals: {
             vue: 'Vue',
           },
