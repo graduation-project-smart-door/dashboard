@@ -28,4 +28,4 @@ jobs:
           script: |
             docker stop ${{ secrets.FRONT_CONTAINER_NAME }}
             docker rm ${{ secrets.FRONT_CONTAINER_NAME }}
-            docker run -d -p ${{ secrets.PORT }} ${{ secrets.FRONT_CONTAINER_NAME }}
+            docker run -d -p ${{ secrets.PORT }}:80 ${{ secrets.FRONT_CONTAINER_NAME }}
