@@ -2,6 +2,8 @@ import { AxiosRequestConfig } from 'axios'
 
 import { API_CONFIG, AxiosService } from '@/plugins/AxiosService/AxiosService'
 
+import { TableParamsType } from '@/types/common.type'
+
 class AdminsService extends AxiosService {
   constructor(config?: AxiosRequestConfig) {
     super(config)
@@ -15,7 +17,7 @@ class AdminsService extends AxiosService {
     })
   }
 
-  getAll = async (params: any) => {
+  getAll = async (params?: Partial<TableParamsType>) => {
     return this.axiosCall({
       method: 'get',
       url: '/admins',

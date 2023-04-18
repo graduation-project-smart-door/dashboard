@@ -17,7 +17,9 @@
 import { onMounted, ref } from 'vue'
 
 import { usersData } from '@/pages/Users/users.constant'
-import UserService from '@/services/UserService/UserService'
+
+import AdminsService from '@/services/AdminsService/AdminsService'
+
 import { ApiUserType } from '@/types/user.type'
 
 const users = ref<ApiUserType[]>([])
@@ -34,7 +36,7 @@ onMounted(() => {
 })
 
 const getAdmins = async (): Promise<void> => {
-  const [error, response] = await UserService.getAll()
+  const [error, response] = await AdminsService.getAll()
 
   if (!error && response) {
     users.value = response
@@ -53,5 +55,26 @@ const changePage = async (page: number): Promise<void> => {
   border-radius: 20px;
   background-color: $color--white;
   padding: 15px;
+}
+
+.infinite-list {
+  height: 300px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.infinite-list .infinite-list-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--el-color-primary);
+  background: var(--el-color-primary-light-9);
+  margin: 10px;
+}
+
+.infinite-list .infinite-list-item + .list-item {
+  margin-top: 10px;
 }
 </style>
