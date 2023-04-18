@@ -25,6 +25,8 @@ jobs:
         uses: appleboy/ssh-action@master
 
         with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
           script: |
             docker stop ${{ secrets.FRONT_CONTAINER_NAME }}
             docker rm ${{ secrets.FRONT_CONTAINER_NAME }}
