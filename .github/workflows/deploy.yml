@@ -1,0 +1,31 @@
+name: Dashboard Build & Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build container
+        run: |
+          docker build -f containers/app/Dockerfile {{ secrets.FRONT_CONTAINER_NAME ]} .
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+
+        with:
+          script: |
+            docker stop ${{ secrets.FRONT_CONTAINER_NAME }}
+            docker rm ${{ secrets.FRONT_CONTAINER_NAME }}
+            docker run -d -p ${{ secrets.PORT }} ${{ secrets.FRONT_CONTAINER_NAME }}
