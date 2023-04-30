@@ -1,5 +1,5 @@
 {
-  "name": "santeh-kopilka",
+  "name": "graduation-project",
   "version": "0.0.0",
   "scripts": {
     "prepare": "husky install",
