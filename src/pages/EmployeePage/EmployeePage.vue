@@ -13,13 +13,13 @@
       </div>
     </div>
 
-    <el-row class="mt-48" :gutter="isMobileOrTablet ? 0 : 12">
+    <el-row class="mt-48" :gutter="isMobileOrTablet ? 0 : 12" align="middle">
       <el-col :md="8">
         <div class="employee-information">
           <div>
             <h6 class="color-default">Информация о профиле</h6>
             <div class="text-lg mt-24">
-              Я крутой чел. Я работаю здесь на большие деньги. Мне их не хватает на пропитание. Купите хлеба. Я голодаю.
+              Я крутой чел. Я работаю здесь за большие деньги. Мне их не хватает на пропитание. Купите хлеба. Я голодаю.
               Спасите. Меня держат в заложниках *подмигивает*.
               <br />
               Прошло столько лет в заточении. Они заставляют меня чистить лук, стрелять по лягушкам из космоса.
@@ -45,7 +45,7 @@
           <el-tab-pane label="Приходы и уходы" name="events">
             <employee-chart-events :arrival="[]" :leaving="[]" />
           </el-tab-pane>
-          <el-tab-pane label="Количество уходоов и приходов" name="average">
+          <el-tab-pane label="Количество уходов и приходов" name="average">
             <div class="d-f ai-c fd-c">
               <el-select v-model="activeChartPeriod" class="employee-page__chart-period" @change="handlePeriodChange">
                 <el-option
@@ -186,7 +186,6 @@ const handlePeriodChange = async (value: string): Promise<void> => {
 
   &-information {
     width: 100%;
-    height: 100%;
     max-width: 100%;
     display: flex;
     flex-direction: column;

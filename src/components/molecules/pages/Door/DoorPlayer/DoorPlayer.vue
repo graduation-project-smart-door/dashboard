@@ -12,7 +12,7 @@ onMounted(() => {
   nextTick(() => {
     new Artplayer({
       container: player.value as HTMLDivElement,
-      url: 'https://artplayer.org/assets/sample/video.mp4',
+      url: 'http://127.0.0.1:8082/webcam',
       volume: 0.5,
       isLive: false,
       autoplay: false,

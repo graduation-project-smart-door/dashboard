@@ -42,29 +42,6 @@
         </li>
 
         <li>
-          <el-dropdown ref="microcontrollerDropdownInstance" trigger="contextmenu" class="dropdown">
-            <base-icon
-              name="microcontroller"
-              class="icon-24"
-              @click="handleDropdownVisibleToggle(true, 'microcontrollerDropdownInstance')"
-            />
-
-            <template #dropdown>
-              <ul>
-                <li class="dropdown__item">
-                  <router-link
-                    :to="{ name: ROUTE_NAMES.ControllerPage }"
-                    @click="handleDropdownVisibleToggle(false, 'microcontrollerDropdownInstance')"
-                  >
-                    Статистика
-                  </router-link>
-                </li>
-              </ul>
-            </template>
-          </el-dropdown>
-        </li>
-
-        <li>
           <router-link :to="{ name: ROUTE_NAMES.HomePage }">
             <base-icon name="logo" class="icon-18" />
           </router-link>

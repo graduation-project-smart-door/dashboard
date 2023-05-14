@@ -35,14 +35,6 @@ const router = createRouter({
           },
         },
         {
-          path: '/controller',
-          name: ROUTE_NAMES.ControllerPage,
-          component: () => import('@/pages/ControllerPage/ControllerPage.vue'),
-          meta: {
-            breadcrumb: [{ title: 'Контроллер', name: '/', isLink: true }],
-          },
-        },
-        {
           path: '/door',
           name: ROUTE_NAMES.DoorPage,
           component: () => import('@/pages/DoorPage/DoorPage.vue'),

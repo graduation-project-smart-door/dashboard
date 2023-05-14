@@ -140,6 +140,11 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: false,
         },
+        '/cams': {
+          target: env.VITE_CAMS_BASE_URL,
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
   }

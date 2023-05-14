@@ -26,6 +26,8 @@
       </div>
     </el-col>
   </el-row>
+
+  <video src="http://localhost:8082/video" width="100%" height="700px" />
 </template>
 
 <script lang="ts" setup>
