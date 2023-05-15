@@ -24,7 +24,7 @@
       </ul>
     </el-collapse-item>
 
-    <!-- <el-collapse-item title="Дверь" name="3">
+    <el-collapse-item title="Дверь" name="3">
       <ul>
         <li class="base-sidebar-collapse__page">
           <router-link class="base-sidebar-collapse__link" :to="{ name: ROUTE_NAMES.DoorPage }">
@@ -32,7 +32,7 @@
           </router-link>
         </li>
       </ul>
-    </el-collapse-item> -->
+    </el-collapse-item>
 
     <el-collapse-item title="Администраторы" name="4">
       <ul>
