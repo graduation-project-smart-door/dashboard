@@ -1,4 +1,32 @@
 .el-button {
+  width: fit-content !important;
+  border: none !important;
+  margin: 0 !important;
+
+  &.el-button--info {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
+  &.el-button--success {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
+  &.el-button--warning {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
   &.el-button--primary {
     border-color: transparent;
     box-shadow: 3px 3px 6px rgb(25 90 188 / 0.2);
@@ -17,3 +45,6 @@
     }
   }
 }
+
+
+

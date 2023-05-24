@@ -62,6 +62,10 @@ export const getBaseUrl = (): string => {
   return import.meta.env.DEV ? '/api/v1' : [import.meta.env.VITE_BASE_URL, '/api/v1'].join('')
 }
 
+export const getControllerUrl = (): string => {
+  return import.meta.env.DEV ? '/api' : `${import.meta.env.VITE_CONTROLLER_URL}/api`
+}
+
 export const API_CONFIG: AxiosRequestConfig = {
   baseURL: getBaseUrl(),
   withCredentials: true,

@@ -145,6 +145,11 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           secure: false,
         },
+        '/api': {
+          target: env.VITE_CONTROLLER_URL,
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
   }
