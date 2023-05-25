@@ -71,3 +71,9 @@ export const API_CONFIG: AxiosRequestConfig = {
   withCredentials: true,
   timeout: 15000,
 }
+
+export const API_CONTROLLER_CONFIG: AxiosRequestConfig = {
+  baseURL: getControllerUrl(),
+  withCredentials: true,
+  timeout: 10000,
+}

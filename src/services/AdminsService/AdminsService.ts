@@ -10,7 +10,7 @@ class AdminsService extends AxiosService {
   }
 
   create = async (data: FormData) => {
-    return this.axiosCall({
+    return await this.axiosCall({
       method: 'post',
       url: '/admins',
       data,
@@ -18,7 +18,7 @@ class AdminsService extends AxiosService {
   }
 
   getAll = async (params?: Partial<TableParamsType>) => {
-    return this.axiosCall({
+    return await this.axiosCall({
       method: 'get',
       url: '/admins',
       params,

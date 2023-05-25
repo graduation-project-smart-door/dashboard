@@ -18,25 +18,25 @@
 
         <div class="mt-12">
           <div class="door-page__content-buttons">
-            <el-button type="info" class="door-page__interaction-button">
+            <el-button type="info" class="door-page__interaction-button" @click="handleHealthCheck">
               <div class="content-buttons__left">
                 <base-icon name="check-circle" class="icon-30 info-icon" />
               </div>
               <div class="content-buttons__right">Проверка сервера</div>
             </el-button>
-            <el-button type="primary" class="door-page__interaction-button">
+            <el-button type="primary" class="door-page__interaction-button" @click="handleCalibrate">
               <div class="content-buttons__left">
                 <base-icon name="check-circle" class="icon-30 info-icon" />
               </div>
               <div class="content-buttons__right">Калибровка двери</div>
             </el-button>
-            <el-button type="success" class="door-page__interaction-button">
+            <el-button type="success" class="door-page__interaction-button" @click="handleOpen">
               <div class="content-buttons__left">
                 <base-icon name="check-circle" class="icon-30 info-icon" />
               </div>
               <div class="content-buttons__right">Аварийное открытие двери</div>
             </el-button>
-            <el-button type="warning" class="door-page__interaction-button">
+            <el-button type="warning" class="door-page__interaction-button" @click="handleClose">
               <div class="content-buttons__left">
                 <base-icon name="check-circle" class="icon-30 info-icon" />
               </div>
@@ -53,8 +53,10 @@
 
 <script lang="ts" setup>
 import { useScreen } from '@/hooks/useScreen'
+import { useDoor } from '@/pages/DoorPage/useDoor'
 
 const { isMobile } = useScreen()
+const { close: handleClose, open: handleOpen, healthCheck: handleHealthCheck, calibrate: handleCalibrate } = useDoor()
 </script>
 
 <style lang="scss" scoped>
