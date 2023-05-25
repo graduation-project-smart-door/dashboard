@@ -39,7 +39,7 @@ const router = createRouter({
           name: ROUTE_NAMES.DoorPage,
           component: () => import('@/pages/DoorPage/DoorPage.vue'),
           meta: {
-            breadcrumb: [{ title: 'Статистика Двери', name: '/', isLink: true }],
+            breadcrumb: [{ title: 'Управление дверью', name: '/', isLink: true }],
           },
         },
         {

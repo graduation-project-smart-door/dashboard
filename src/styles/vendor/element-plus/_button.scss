@@ -1,15 +1,45 @@
 .el-button {
-  &.el-button--primary {
-    border-color: transparent;
-    box-shadow: 3px 3px 6px rgb(25 90 188 / 0.2);
-    text-shadow: 1px 1px 0 rgb(0 0 0 / 0.1);
-    color: $color--white;
-    background: $color--primary;
-    transition: background 0.3s ease-out;
+  width: fit-content !important;
+  border: none !important;
+  margin: 0 !important;
 
-    &:not(.is-disabled):hover,
-    &:focus:hover {
-      background: linear-gradient(0deg, rgb(51 51 51 / 0.2), rgb(51 51 51 / 0.2)), $color--primary;
+  &.el-button--info {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
+  &.el-button--success {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
+  &.el-button--warning {
+    height: 100px;
+    position: relative;
+    justify-content: start;
+    padding: 0;
+
+  }
+
+  &--primary {
+    --el-button--bg-color: #5e72e4 !important;
+    --el-button-hover-bg-color: #7d8de8;
+    --el-button-active-bg-color: #455cdc;
+
+    background-color: var(--el-button--bg-color);
+
+    &:hover {
+      background-color: var(--el-button-hover-bg-color);
+    }
+
+    &:active {
+      background-color: var(--el-button-active-bg-color);
     }
 
     &.is-disabled {
@@ -17,3 +47,6 @@
     }
   }
 }
+
+
+

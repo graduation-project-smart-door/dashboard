@@ -6,8 +6,8 @@ class EventsService extends AxiosService {
     super(config)
   }
 
-  getAll = () => {
-    return this.axiosCall({
+  getAll = async () => {
+    return await this.axiosCall({
       method: 'get',
       url: '/actions',
     })

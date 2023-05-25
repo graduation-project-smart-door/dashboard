@@ -10,7 +10,7 @@ class UserService extends AxiosService {
   }
 
   create = async (data?: unknown) => {
-    return this.axiosCall({
+    return await this.axiosCall({
       method: 'post',
       url: '/',
       data,
@@ -18,7 +18,7 @@ class UserService extends AxiosService {
   }
 
   login = async (data: UserLoginType) => {
-    return this.axiosCall({
+    return await this.axiosCall({
       method: 'post',
       url: '/login',
       data,
@@ -26,7 +26,7 @@ class UserService extends AxiosService {
   }
 
   getAll = async (params?: any) => {
-    return this.axiosCall<ApiUserType[]>({
+    return await this.axiosCall<ApiUserType[]>({
       method: 'get',
       url: '/users',
       params,

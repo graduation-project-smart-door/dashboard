@@ -58,7 +58,7 @@
                     :to="{ name: ROUTE_NAMES.DoorPage }"
                     @click="handleDropdownVisibleToggle(false, 'doorDropdownInstance')"
                   >
-                    Статистика двери
+                    Управление дверью
                   </router-link>
                 </li>
               </ul>

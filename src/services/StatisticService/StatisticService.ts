@@ -10,7 +10,7 @@ class StatisticService extends AxiosService {
   }
 
   getVisitingChart = async (data?: DatesFilterType) => {
-    return this.axiosCall({
+    return await this.axiosCall({
       method: 'get',
       url: '/statistic',
       params: data,
