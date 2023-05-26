@@ -20,27 +20,51 @@
           <div class="door-page__content-buttons">
             <el-button type="info" class="door-page__interaction-button" @click="handleHealthCheck">
               <div class="content-buttons__left">
-                <base-icon name="check-circle" class="icon-30 info-icon" />
+                <button-loader v-if="!statuses.healthcheck.loaded" />
+                <base-icon v-else name="check-circle" class="icon-30 info-icon" />
               </div>
-              <div class="content-buttons__right">Проверка сервера</div>
+              <div class="content-buttons__right">
+                <div> Проверка сервера </div>
+                <div v-if="statuses.healthcheck.text" class="mt-8">
+                  {{ statuses.healthcheck.text }}
+                </div>
+              </div>
             </el-button>
             <el-button type="primary" class="door-page__interaction-button" @click="handleCalibrate">
               <div class="content-buttons__left">
-                <base-icon name="check-circle" class="icon-30 info-icon" />
+                <button-loader v-if="!statuses.calibrate.loaded" />
+                <base-icon v-else name="check-circle" class="icon-30 info-icon" />
               </div>
-              <div class="content-buttons__right">Калибровка двери</div>
+              <div class="content-buttons__right">
+                <div> Калибровка двери </div>
+                <div v-if="statuses.calibrate" class="mt-8">
+                  {{ statuses.calibrate.text }}
+                </div>
+              </div>
             </el-button>
             <el-button type="success" class="door-page__interaction-button" @click="handleOpen">
               <div class="content-buttons__left">
-                <base-icon name="check-circle" class="icon-30 info-icon" />
+                <button-loader v-if="!statuses.open.loaded" />
+                <base-icon v-else name="check-circle" class="icon-30 info-icon" />
               </div>
-              <div class="content-buttons__right">Аварийное открытие двери</div>
+              <div class="content-buttons__right">
+                <div> Аварийное открытие двери </div>
+                <div v-if="statuses.open" class="mt-8">
+                  {{ statuses.open.text }}
+                </div>
+              </div>
             </el-button>
             <el-button type="warning" class="door-page__interaction-button" @click="handleClose">
               <div class="content-buttons__left">
-                <base-icon name="check-circle" class="icon-30 info-icon" />
+                <button-loader v-if="!statuses.close.loaded" />
+                <base-icon v-else name="check-circle" class="icon-30 info-icon" />
               </div>
-              <div class="content-buttons__right">Аварийное закрытие двери</div>
+              <div class="content-buttons__right">
+                <div> Аварийное закрытие двери </div>
+                <div v-if="statuses.close" class="mt-8">
+                  {{ statuses.close.text }}
+                </div>
+              </div>
             </el-button>
           </div>
         </div>
@@ -56,7 +80,13 @@ import { useScreen } from '@/hooks/useScreen'
 import { useDoor } from '@/pages/DoorPage/useDoor'
 
 const { isMobile } = useScreen()
-const { close: handleClose, open: handleOpen, healthCheck: handleHealthCheck, calibrate: handleCalibrate } = useDoor()
+const {
+  close: handleClose,
+  open: handleOpen,
+  healthCheck: handleHealthCheck,
+  calibrate: handleCalibrate,
+  statuses,
+} = useDoor()
 </script>
 
 <style lang="scss" scoped>
@@ -74,13 +104,14 @@ const { close: handleClose, open: handleOpen, healthCheck: handleHealthCheck, ca
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 
     @include responsive(sm, $breakpoints-only-max) {
       flex-direction: row;
       justify-content: left;
     }
     @include responsive(xs) {
-      justify-content: left;
+      justify-content: center;
     }
   }
 

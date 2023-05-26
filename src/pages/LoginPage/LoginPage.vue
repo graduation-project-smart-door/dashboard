@@ -12,9 +12,13 @@
 
     <el-col :span="0" :md="10" class="h-100 w-100 py-md-16 mt-md-0 mt-24">
       <div class="login-page__background">
-        <h4>
-          И мы сегодня покорим это небо, нет, я соврал <br />
-          И ты станешь калекой
+        <h4 class="px-40 ta-c">
+          <span class="bold"> Выпускной проект</span>
+          <br />
+          на тему
+          <br />
+          РАЗРАБОТА ПРОГРАММНОЙ ЧАСТИ И ПОЛЬЗОВАТЕЛЬСКОГО ИНТЕРФЕЙСА ДЛЯ СИСТЕМЫ УПРАВЛЕНИЯ АВТОМАТИЧЕСКОЙ ДВЕРЬЮ С
+          ПРИМЕНЕНИЕМ НЕЙРОННОЙ СЕТИ
         </h4>
       </div>
     </el-col>
@@ -59,6 +63,10 @@
     background-position: 0 0;
     background-size: cover;
     background-repeat: no-repeat;
+
+    h4 {
+      font-weight: 300;
+    }
   }
 
   @include responsive(md) {
