@@ -8,9 +8,9 @@
       <el-input v-model="loginFormData.password" placeholder="Введите пароль" />
     </el-form-item>
 
-    <el-form-item>
-      <el-switch v-model="isRememberMe" class="login-form__switch" active-text="Запомнить меня" />
-    </el-form-item>
+    <!--    <el-form-item>-->
+    <!--      <el-switch v-model="isRememberMe" class="login-form__switch" active-text="Запомнить меня" />-->
+    <!--    </el-form-item>-->
 
     <el-form-item class="login-form__submit-button">
       <el-button type="primary" class="bold" data-testid="submit" @click="handleFormSubmit">Авторизация</el-button>
