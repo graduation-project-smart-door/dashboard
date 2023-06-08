@@ -13,6 +13,7 @@ import vue from '@vitejs/plugin-vue'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 import { VitePWA } from 'vite-plugin-pwa'
+import { log } from 'node:console'
 
 const styleLintConfig = StyleLintPlugin({
   files: ['src/**/*.{vue,scss}'],
@@ -135,16 +136,20 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       proxy: {
+        '/api': {
+          target: env.VITE_CONTROLLER_URL,
+          changeOrigin: false,
+          secure: false,
+          rewrite: (path: string) => {
+            console.log(path)
+
+            return path.replace(/^\/api/, '')
+          },
+        },
         '/api/v1': {
           target: env.VITE_BASE_URL,
           changeOrigin: true,
           secure: false,
-        },
-        '/api': {
-          target: env.VITE_CONTROLLER_URL,
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },

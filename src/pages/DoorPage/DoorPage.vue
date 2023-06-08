@@ -72,7 +72,7 @@
     </el-col>
   </el-row>
 
-  <video src="http://localhost:8082/video" width="100%" height="700px" />
+  <!-- <iframe src="http://127.0.0.1:5501/?webcam=2" width="100%" height="700px" /> -->
 </template>
 
 <script lang="ts" setup>
